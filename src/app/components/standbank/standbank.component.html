@@ -1,0 +1,2333 @@
+<!-- Stand Bank  Component Starts Here -->
+<form [formGroup]="SetShiftManagerStandBankFormValues">
+
+    <div id="standbank_content" class="standbank_content ccontent_part">
+        <!-- <div class="section_header">
+        <div class="page_name">Add Stand Bank Denominations</div>
+    </div> -->
+        <div class="common_tabs">
+            <ul class="nav nav-tabs" id="myTab" role="tablist" [hidden]="isHideDrop">
+
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="main_safe_tab" data-bs-toggle="tab" data-bs-target="#main_safe1"
+                        type="button" role="tab" aria-controls="home" aria-selected="false"
+                        (click)="ToggleChange('MAINSAFE')"
+                        [hidden]="(!findAccess('ADMIN') && !findAccess('MANAGER'))">Main Safe</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="smanager_verification_tab" data-bs-toggle="tab"
+                        data-bs-target="#smanager_verification1" type="button" role="tab" aria-controls="profile"
+                        aria-selected="true" (click)="ToggleChange('SHIFTMANAGER')"
+                        [hidden]="(!findAccess('ADMIN') || findAccess('SHIFTMANAGER')) &&  (findAccess('ADMIN') || !findAccess('SHIFTMANAGER')) && (findAccess('ADMIN') || !findAccess('MANAGER')) && (!findAccess('ADMIN') || findAccess('MANAGER'))">Shift
+                        Manager verification</button>
+                </li>
+
+            </ul>
+            <ul class="nav nav-tabs" id="myTab" role="tablist" [hidden]="isHideText">
+
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="main_safe_tab" data-bs-toggle="tab" data-bs-target="#main_safe2"
+                        type="button" role="tab" aria-controls="home" aria-selected="false"
+                        (click)="ToggleChange('MAINSAFE')"
+                        [hidden]="(!findAccess('ADMIN') && !findAccess('MANAGER'))">Main Safe</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="smanager_verification_tab" data-bs-toggle="tab"
+                        data-bs-target="#smanager_verification2" type="button" role="tab" aria-controls="profile"
+                        aria-selected="true" (click)="ToggleChange('SHIFTMANAGER')"
+                        [hidden]="(!findAccess('ADMIN') || findAccess('SHIFTMANAGER')) &&  (findAccess('ADMIN') || !findAccess('SHIFTMANAGER')) && (findAccess('ADMIN') || !findAccess('MANAGER')) && (!findAccess('ADMIN') || findAccess('MANAGER'))">Shift
+                        Manager verification</button>
+                </li>
+
+            </ul>
+            <div [hidden]="isHideDrop" class="tab-content" id="myTabContent">
+                <div class="tab-pane fade" id="smanager_verification1" role="tabpanel"
+                    aria-labelledby="smanager_verification_tab"
+                    [hidden]="(!findAccess('ADMIN') || findAccess('SHIFTMANAGER')) &&  (findAccess('ADMIN') || !findAccess('SHIFTMANAGER')) && (findAccess('ADMIN') || !findAccess('MANAGER')) && (!findAccess('ADMIN') || findAccess('MANAGER'))">
+                    <div class="shift_managerDiv">
+                        <div class="section_header">
+                            <div class="page_name">Shift Manager Verification</div>
+                        </div>
+                        <div class="section_title">
+                            <div class="row">
+                                <div class="col-3 col-md-3 col-lg-3 padR0">
+                                    <div class="">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                                <div class="col-2 col-md-2 col-lg-2">
+                                    <div class="">
+                                        Denominations
+                                    </div>
+                                </div>
+                                <div class="col-1 col-md-1 col-lg-1">
+                                    <div class="">
+
+                                    </div>
+                                </div>
+                                <div class="col-3 col-md-3 col-lg-3 padR0">
+                                    <div class="labelColor">
+                                        Safe Balance
+                                    </div>
+                                </div>
+                                <div class="col-1 col-md-1 col-lg-1 padR0">
+                                    <div class="">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section_body">
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                Pennies
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                            <span> X</span>
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                    </div>
+                                </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <!-- <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled> -->
+                                            <select class="form-select form-select-sm" formControlName="PenniesFormList"
+                                                (change)="selectChangeHandler($event,'Pennies','SHIFTMANAGER')">
+
+                                                <option *ngFor="let pennies of PenniesFormListvalues"
+                                                    [ngValue]="pennies.value">
+                                                    {{pennies.name}}
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                Nickels
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                            <span> X</span>
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                    </div>
+                                </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <!-- <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled> -->
+                                            <select class="form-select form-select-sm" formControlName="NickelsFormList"
+                                                (change)="selectChangeHandler($event,'Nickels','SHIFTMANAGER')">
+
+                                                <option *ngFor="let nickels of NickelsFormListvalues"
+                                                    [ngValue]="nickels.value">
+                                                    {{nickels.name}}
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                Dimes
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                            <span> X</span>
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                    </div>
+                                </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <!-- <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled> -->
+                                            <select class="form-select form-select-sm" formControlName="DimesFromList"
+                                                (change)="selectChangeHandler($event,'Dimes','SHIFTMANAGER')">
+
+                                                <option *ngFor="let dimes of DimesFromListValues"
+                                                    [ngValue]="dimes.value">
+                                                    {{dimes.name}}
+                                                </option>
+
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                Quarters
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                            <span> X</span>
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                    </div>
+                                </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <!-- <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled> -->
+                                            <select class="form-select form-select-sm"
+                                                formControlName="QuartersFormList"
+                                                (change)="selectChangeHandler($event,'Quarters','SHIFTMANAGER')">
+
+                                                <option *ngFor="let quarters of QuartersFormListValues"
+                                                    [ngValue]="quarters.value">
+                                                    {{quarters.name}}
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                1$
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                            <span> X</span>
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                    </div>
+                                </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <!-- <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled> -->
+                                            <select class="form-select form-select-sm"
+                                                formControlName="OneDollarFormList"
+                                                (change)="selectChangeHandler($event,'Onedollar','SHIFTMANAGER')">
+
+
+                                                <option *ngFor="let one of OneDollarFormListValues"
+                                                    [ngValue]="one.value">
+                                                    {{one.name}}
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="padTB4">
+                            <div class="row">  
+                                <div class="col-3 col-md-3 col-lg-3 padR0">
+                                <div class="">
+                                    &nbsp;
+                                </div>
+                            </div>                        
+                                <div class="col-2 col-md-2 col-lg-2 val_col">
+                                    <div class="billaccep_txt text-center">
+                                        <div class="value_type">
+                                            2$
+                                        </div>
+                                        <div class="value_symbol">
+                                           <span> X</span>
+                                        </div>                        
+                                    </div>
+                                </div>
+                                <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-1 col-md-1 col-lg-1">
+                                    <div class="billaccep_txt text-center">
+                                        -
+                                    </div>
+                                </div>
+                                <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-1 col-md-1 col-lg-1 padR0">
+                                    <div class="">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                5$
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                            <span> X</span>
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                    </div>
+                                </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <!-- <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled> -->
+                                            <select class="form-select form-select-sm"
+                                                formControlName="FiveDollarFormList"
+                                                (change)="selectChangeHandler($event,'Fivedollar','SHIFTMANAGER')">
+
+                                                <option *ngFor="let five of FiveDollarFormListValues"
+                                                    [ngValue]="five.value">
+                                                    {{five.name}}
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                10$
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                            <span> X</span>
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                    </div>
+                                </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <!-- <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled> -->
+                                            <select class="form-select form-select-sm"
+                                                formControlName="TenDollarFormList"
+                                                (change)="selectChangeHandler($event,'Tendollar','SHIFTMANAGER')">
+
+                                                <option *ngFor="let ten of TenDollarFormListValues"
+                                                    [ngValue]="ten.value">
+                                                    {{ten.name}}
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                20$
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                            <span> X</span>
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                    </div>
+                                </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <!-- <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled> -->
+                                            <select class="form-select form-select-sm"
+                                                formControlName="TwentyDollarFormList"
+                                                (change)="selectChangeHandler($event,'Twentydollar','SHIFTMANAGER')">
+
+                                                <option *ngFor="let twenty of TwentyDollarFormListValues"
+                                                    [ngValue]="twenty.value">
+                                                    {{twenty.name}}
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                50$
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                            <span> X</span>
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                    </div>
+                                </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <!-- <input type="text" class="form-control-sm" formControlName="FiftyDollar" id="fiftyDollar" name="fiftyDollar" aria-describedby="cash" (keyup)="fiftyValue($event)"> -->
+                                            <select class="form-select form-select-sm"
+                                                formControlName="FiftyDollarFormList"
+                                                (change)="selectChangeHandler($event,'Fiftydollar','SHIFTMANAGER')">
+
+                                                <option *ngFor="let Fifty of FiftyDollarFromListValues"
+                                                    [ngValue]="Fifty.value">
+                                                    {{Fifty.name}}
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                100$
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                            <span> X</span>
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                    </div>
+                                </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <!-- <input type="text" class="form-control-sm" formControlName="HundredDollar" aria-describedby="cash" name="tDollar" (keyup)="tValue($event)"> -->
+                                            <select class="form-select form-select-sm"
+                                                formControlName="HundredDollarFormList"
+                                                (change)="selectChangeHandler($event,'Hundreddollar','SHIFTMANAGER')">
+
+                                                <option *ngFor="let Hundred of HundredDollarFromListValues"
+                                                    [ngValue]="Hundred.value">
+                                                    {{Hundred.name}}
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section_footer">
+                            <div class="footer_total standbank_footer_total">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2">
+                                        <div class="billaccep_txt tvalue_txt">
+                                            Total Value
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        &nbsp;
+                                    </div>
+                                </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm"
+                                                formControlName="TotalDollarValue" value="${{TotalValue}}"
+                                                id="totalValue" aria-describedby="cash" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="standbankbtn">
+                        <button type="button" class="btn cprimary_btn" (click)="enableStandbank('SHIFTMANAGER')"
+                            [disabled]="IsSafeSave">{{ShiftmanagerText}}</button>
+                        <button type="button" class="btn cprimary_btn" (click)="gotoHomeNav()">Cancel</button>
+                    </div>
+
+                </div>
+                <div class="tab-pane fade show active" id="main_safe1" role="tabpanel" aria-labelledby="main_safe_tab"
+                    [hidden]="(!findAccess('ADMIN') && !findAccess('MANAGER'))">
+                    <div class="main_safeDiv">
+                        <div class="section_header">
+                            <div class="page_name">Main Safe</div>
+                        </div>
+                        <div class="section_title">
+                            <div class="row">
+                                <div class="col-3 col-md-3 col-lg-3 padR0">
+                                    <div class="">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                                <div class="col-2 col-md-2 col-lg-2">
+                                    <div class="">
+                                        Denominations
+                                    </div>
+                                </div>
+                                <div class="col-1 col-md-1 col-lg-1">
+                                    <div class="">
+
+                                    </div>
+                                </div>
+                                <div class="col-3 col-md-3 col-lg-3 padR0">
+                                    <div class="labelColor">
+                                        Safe Balance
+                                    </div>
+                                </div>
+                                <div class="col-1 col-md-1 col-lg-1 padR0">
+                                    <div class="">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section_body">
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                Pennies
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                            <span> X</span>
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                    </div>
+                                </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <!-- <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled> -->
+                                            <select class="form-select form-select-sm"
+                                                formControlName="MainSafePenniesFormList"
+                                                (change)="selectChangeHandler($event,'MainSafePennies','MAINSAFE')">
+
+                                                <option *ngFor="let pennies of PenniesFormListvalues"
+                                                    [ngValue]="pennies.value">
+                                                    {{pennies.name}}
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                Nickels
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                            <span> X</span>
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                    </div>
+                                </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <!-- <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled> -->
+                                            <select class="form-select form-select-sm"
+                                                formControlName="MainSafeNickelsFormList"
+                                                (change)="selectChangeHandler($event,'MainSafeNickels','MAINSAFE')">
+                                                <option *ngFor="let nickels of NickelsFormListvalues"
+                                                    [ngValue]="nickels.value">
+                                                    {{nickels.name}}
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                Dimes
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                            <span> X</span>
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                    </div>
+                                </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <!-- <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled> -->
+                                            <select class="form-select form-select-sm"
+                                                formControlName="MainSafeDimesFromList"
+                                                (change)="selectChangeHandler($event,'MainSafeDimes','MAINSAFE')">
+
+                                                <option *ngFor="let dimes of DimesFromListValues"
+                                                    [ngValue]="dimes.value">
+                                                    {{dimes.name}}
+                                                </option>
+
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                Quarters
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                            <span> X</span>
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                    </div>
+                                </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <!-- <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled> -->
+                                            <select class="form-select form-select-sm"
+                                                formControlName="MainSafeQuartersFormList"
+                                                (change)="selectChangeHandler($event,'MainSafeQuarters','MAINSAFE')">
+                                                <option *ngFor="let quarters of QuartersFormListValues"
+                                                    [ngValue]="quarters.value">
+                                                    {{quarters.name}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                1$
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                            <span> X</span>
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                    </div>
+                                </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <!-- <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled> -->
+                                            <select class="form-select form-select-sm"
+                                                formControlName="MainSafeOneDollarFormList"
+                                                (change)="selectChangeHandler($event,'MainSafeOnedollar','MAINSAFE')">
+                                                <option *ngFor="let one of OneDollarFormListValues"
+                                                    [ngValue]="one.value">
+                                                    {{one.name}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="padTB4">
+                            <div class="row">    
+                                <div class="col-3 col-md-3 col-lg-3 padR0">
+                                <div class="">
+                                    &nbsp;
+                                </div>
+                            </div>                      
+                                <div class="col-2 col-md-2 col-lg-2 val_col">
+                                    <div class="billaccep_txt text-center">
+                                        <div class="value_type">
+                                            2$
+                                        </div>
+                                        <div class="value_symbol">
+                                           <span> X</span>
+                                        </div>                        
+                                    </div>
+                                </div>
+                                <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-1 col-md-1 col-lg-1">
+                                    <div class="billaccep_txt text-center">
+                                        -
+                                    </div>
+                                </div>
+                                <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-1 col-md-1 col-lg-1 padR0">
+                                    <div class="">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                5$
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                            <span> X</span>
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                    </div>
+                                </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <!-- <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled> -->
+                                            <select class="form-select form-select-sm"
+                                                formControlName="MainSafeFiveDollarFormList"
+                                                (change)="selectChangeHandler($event,'MainSafeFivedollar','MAINSAFE')">
+                                                <option *ngFor="let five of FiveDollarFormListValues"
+                                                    [ngValue]="five.value">
+                                                    {{five.name}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                10$
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                            <span> X</span>
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                    </div>
+                                </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <!-- <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled> -->
+                                            <select class="form-select form-select-sm"
+                                                formControlName="MainSafeTenDollarFormList"
+                                                (change)="selectChangeHandler($event,'MainSafeTendollar','MAINSAFE')">
+                                                <option *ngFor="let ten of TenDollarFormListValues"
+                                                    [ngValue]="ten.value">
+                                                    {{ten.name}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                20$
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                            <span> X</span>
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                    </div>
+                                </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <!-- <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled> -->
+                                            <select class="form-select form-select-sm"
+                                                formControlName="MainSafeTwentyDollarFormList"
+                                                (change)="selectChangeHandler($event,'MainSafeTwentydollar','MAINSAFE')">
+                                                <option *ngFor="let twenty of TwentyDollarFormListValues"
+                                                    [ngValue]="twenty.value">
+                                                    {{twenty.name}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                50$
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                            <span> X</span>
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                    </div>
+                                </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <!-- <input type="text" class="form-control-sm" formControlName="MainSafeFiftyDollar" id="" aria-describedby="cash" (keyup)="mainfiftyValue($event)"> -->
+                                            <select class="form-select form-select-sm"
+                                                formControlName="MainSafeFiftyDollarFormList"
+                                                (change)="selectChangeHandler($event,'MainSafeFiftydollar','MAINSAFE')">
+                                                <option *ngFor="let fifty of FiftyDollarFromListValues"
+                                                    [ngValue]="fifty.value">
+                                                    {{fifty.name}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                100$
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                            <span> X</span>
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                    </div>
+                                </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <!-- <input type="text" class="form-control-sm" formControlName="MainSafeHundredDollar" id="" aria-describedby="cash" (keyup)="maintValue($event)"> -->
+                                            <select class="form-select form-select-sm"
+                                                formControlName="MainSafeHundredDollarFormList"
+                                                (change)="selectChangeHandler($event,'MainSafeHundreddollar','MAINSAFE')">
+                                                <option *ngFor="let hundred of HundredDollarFromListValues"
+                                                    [ngValue]="hundred.value">
+                                                    {{hundred.name}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section_footer">
+                            <div class="footer_total standbank_footer_total">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2">
+                                        <div class="billaccep_txt tvalue_txt">
+                                            Total Value
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                    <div class="cinput">
+                                        &nbsp;
+                                    </div>
+                                </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm"
+                                                formControlName="MainSafeTotalDollarValue"
+                                                value="${{MainSafeTotalValue}}" id="" aria-describedby="cash" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="standbankbtn">
+                        <button type="button" class="btn cprimary_btn MarL100" (click)="enableStandbank('MAINSAFE')"
+                            [disabled]="IsMainSave">{{MainsafeText}}</button>
+                        <button type="button" class="btn cprimary_btn" (click)="gotoHomeNav()">Cancel</button>
+                        <button [hidden]="IschangeRequest" style="color: red;font-weight: bold;">Change Request -
+                            ON</button>
+                    </div>
+                </div>
+            </div>
+            <div [hidden]="isHideText" class="tab-content" id="myTabContent1">
+                <div class="tab-pane fade" id="smanager_verification2" role="tabpanel"
+                    aria-labelledby="smanager_verification_tab"
+                    [hidden]="(!findAccess('ADMIN') || findAccess('SHIFTMANAGER')) &&  (findAccess('ADMIN') || !findAccess('SHIFTMANAGER')) && (findAccess('ADMIN') || !findAccess('MANAGER')) && (!findAccess('ADMIN') || findAccess('MANAGER'))">
+                    <div class="shift_managerDiv">
+                        <div class="section_header">
+                            <div class="page_name">Shift Manager Verification</div>
+                        </div>
+                        <div class="section_title">
+                            <div class="row">
+                                <div class="col-3 col-md-3 col-lg-3 padR0">
+                                    <div class="">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                                <div class="col-2 col-md-2 col-lg-2">
+                                    <div class="">
+                                        Denominations
+                                    </div>
+                                </div>
+                                <div class="col-1 col-md-1 col-lg-1">
+                                    <div class="">
+
+                                    </div>
+                                </div>
+                                <div class="col-3 col-md-3 col-lg-3 padR0">
+                                    <div class="labelColor">
+                                        Safe Balance
+                                    </div>
+                                </div>
+                                <div class="col-1 col-md-1 col-lg-1 padR0">
+                                    <div class="">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section_body">
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                Pennies
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                                <span> X</span>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id="" aria-describedby="cash"
+                                                value="{{textPennies}}" >
+
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                Nickels
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                                <span> X</span>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id="" value="{{textNickels}}"
+                                                aria-describedby="cash" >
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                Dimes
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                                <span> X</span>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id="" value="{{textDimes}}"
+                                                aria-describedby="cash" >
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                Quarters
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                                <span> X</span>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id="" value="{{textQuarters}}"
+                                                aria-describedby="cash" >
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                1$
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                                <span> X</span>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id="" value="{{textOnedollar}}"
+                                                aria-describedby="cash" >
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="padTB4">
+                                <div class="row">  
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                    <div class="">
+                                        &nbsp;
+                                    </div>
+                                </div>                        
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                2$
+                                            </div>
+                                            <div class="value_symbol">
+                                            <span> X</span>
+                                            </div>                        
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                5$
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                                <span> X</span>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id="" value="{{textFivedollar}}"
+                                                aria-describedby="cash" >
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                10$
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                                <span> X</span>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id="" value="{{textTendollar}}"
+                                                aria-describedby="cash" >
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                20$
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                                <span> X</span>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id="" value="{{textTwentydollar}}"
+                                                aria-describedby="cash" >
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                50$
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                                <span> X</span>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id="" value="{{textFiftyDollar}}"
+                                                aria-describedby="cash" >
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                100$
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                                <span> X</span>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id="" value="{{textHundredDollar}}"
+                                                aria-describedby="cash" >
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section_footer">
+                            <div class="footer_total standbank_footer_total">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2">
+                                        <div class="billaccep_txt tvalue_txt">
+                                            Total Value
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            &nbsp;
+                                        </div>
+                                    </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" formControlName="TotalDollarValue"
+                                                value="${{TotalValue}}" id="totalValue" aria-describedby="cash" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="standbankbtn">
+                        <button type="button" class="btn cprimary_btn" (click)="enableStandbank('SHIFTMANAGER')"
+                            [disabled]="IsSafeSave">{{ShiftmanagerText}}</button>
+                        <button type="button" class="btn cprimary_btn" (click)="gotoHomeNav()">Cancel</button>
+                    </div>
+
+                </div>
+                <div class="tab-pane fade show active" id="main_safe2" role="tabpanel"
+                    aria-labelledby="main_safe_tab" [hidden]="(!findAccess('ADMIN') && !findAccess('MANAGER'))">
+                    <div class="main_safeDiv">
+                        <div class="section_header">
+                            <div class="page_name">Main Safe</div>
+                        </div>
+                        <div class="section_title">
+                            <div class="row">
+                                <div class="col-3 col-md-3 col-lg-3 padR0">
+                                    <div class="">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                                <div class="col-2 col-md-2 col-lg-2">
+                                    <div class="">
+                                        Denominations
+                                    </div>
+                                </div>
+                                <div class="col-1 col-md-1 col-lg-1">
+                                    <div class="">
+
+                                    </div>
+                                </div>
+                                <div class="col-3 col-md-3 col-lg-3 padR0">
+                                    <div class="labelColor">
+                                        Safe Balance
+                                    </div>
+                                </div>
+                                <div class="col-1 col-md-1 col-lg-1 padR0">
+                                    <div class="">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section_body">
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                Pennies
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                        <span> X</span>
+                                    </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                <div class="cinput">
+                                    <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                </div>
+                            </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id="" value="{{textMainSafePennies}}"
+                                                aria-describedby="cash" >
+
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                Nickels
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                        <span> X</span>
+                                    </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                <div class="cinput">
+                                    <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                </div>
+                            </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id="" value="{{textMainSafeNickels}}"
+                                                aria-describedby="cash" >
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                Dimes
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                        <span> X</span>
+                                    </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                <div class="cinput">
+                                    <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                </div>
+                            </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id="" value="{{textMainSafeDimes}}"
+                                                aria-describedby="cash" >
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                Quarters
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                        <span> X</span>
+                                    </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                <div class="cinput">
+                                    <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                </div>
+                            </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id=""
+                                                value="{{textMainSafeQuarters}}" aria-describedby="cash" >
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                1$
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                        <span> X</span>
+                                    </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                <div class="cinput">
+                                    <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                </div>
+                            </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id=""
+                                                value="{{textMainSafeOnedollar}}" aria-describedby="cash" >
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="padTB4">
+                        <div class="row">    
+                            <div class="col-3 col-md-3 col-lg-3 padR0">
+                            <div class="">
+                                &nbsp;
+                            </div>
+                        </div>                      
+                            <div class="col-2 col-md-2 col-lg-2 val_col">
+                                <div class="billaccep_txt text-center">
+                                    <div class="value_type">
+                                        2$
+                                    </div>
+                                    <div class="value_symbol">
+                                    <span> X</span>
+                                    </div>                        
+                                </div>
+                            </div>
+                            <div class="col-3 col-md-3 col-lg-3">
+                                <div class="cinput">
+                                    <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                </div>
+                            </div>
+                            <div class="col-1 col-md-1 col-lg-1">
+                                <div class="billaccep_txt text-center">
+                                    -
+                                </div>
+                            </div>
+                            <div class="col-3 col-md-3 col-lg-3">
+                                <div class="cinput">
+                                    <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                </div>
+                            </div>
+                            <div class="col-1 col-md-1 col-lg-1 padR0">
+                                <div class="">
+                                    &nbsp;
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                5$
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                        <span> X</span>
+                                    </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                <div class="cinput">
+                                    <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                </div>
+                            </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id=""
+                                                value="{{textMainSafeFivedollar}}" aria-describedby="cash" >
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                10$
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                        <span> X</span>
+                                    </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                <div class="cinput">
+                                    <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                </div>
+                            </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id=""
+                                                value="{{textMainSafeTendollar}}" aria-describedby="cash" >
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                20$
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                        <span> X</span>
+                                    </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                <div class="cinput">
+                                    <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                </div>
+                            </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id=""
+                                                value="{{textMainSafeTwentydollar}}" aria-describedby="cash" >
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                50$
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                        <span> X</span>
+                                    </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                <div class="cinput">
+                                    <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                </div>
+                            </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id=""
+                                                value="{{textMainSafeFiftyDollar}}" aria-describedby="cash" >
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padTB4">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 val_col">
+                                        <div class="billaccep_txt text-center">
+                                            <div class="value_type">
+                                                100$
+                                            </div>
+                                            <!-- <div class="value_symbol">
+                                        <span> X</span>
+                                    </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                <div class="cinput">
+                                    <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                                </div>
+                            </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="billaccep_txt text-center">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm" id=""
+                                                value="{{textMainSafeHundredDollar}}" aria-describedby="cash" >
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section_footer">
+                            <div class="footer_total standbank_footer_total">
+                                <div class="row">
+                                    <div class="col-3 col-md-3 col-lg-3 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2">
+                                        <div class="billaccep_txt tvalue_txt">
+                                            Total Value
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-3 col-md-3 col-lg-3">
+                                <div class="cinput">
+                                    &nbsp;
+                                </div>
+                            </div> -->
+                                    <div class="col-1 col-md-1 col-lg-1">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-3 col-lg-3">
+                                        <div class="cinput">
+                                            <input type="text" class="form-control-sm"
+                                                formControlName="MainSafeTotalDollarValue" value="${{MainSafeTotalValue}}"
+                                                id="" aria-describedby="cash" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-1 col-lg-1 padR0">
+                                        <div class="">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="standbankbtn">
+                        <button type="button" class="btn cprimary_btn MarL100" (click)="enableStandbank('MAINSAFE')"
+                            [disabled]="IsMainSave">{{MainsafeText}}</button>
+                        <button type="button" class="btn cprimary_btn" (click)="gotoHomeNav()">Cancel</button>
+                        <button [hidden]="IschangeRequest" style="color: red;font-weight: bold;">Change Request -
+                            ON - ${{changesRequestTotal}}</button>
+                            
+
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+</form>
+<div class="modal1" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content1">
+            <div class="modal-header">
+                <h5 class="modal-title">Denominations</h5>
+            </div>
+            <div class="modal-body">
+                <h2>{{dynamicText}}</h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="closePopup()">
+                   Ok
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Stand Bank Component Ends Here -->

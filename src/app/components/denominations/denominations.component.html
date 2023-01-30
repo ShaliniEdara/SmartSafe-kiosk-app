@@ -1,0 +1,100 @@
+<!-- Change Insert Bills Component Starts Here -->
+<div id="changeinsertbills_content" class="changeinsertbills_content ccontent_part">
+    <div class="section_header">
+        <div class="page_name">Change Insert Bills</div>
+    </div>
+    <div class="section_title">        
+        <div class="row main_title_bpad">
+            <div class="col-8 col-md-8 col-lg-8 text-right">
+                <div class="lh40">
+                    To raise the change request, insert the denominations 
+                </div>                
+            </div>
+            <div class="col-3 col-md-3 col-lg-3 text-right">
+                <button type="button" class="btn cprimary_btn"> ${{newTotalValue}}</button>
+            </div>
+            <div class="col-1 col-md-1 col-lg-1">
+                &nbsp;
+            </div>
+        </div>   
+    </div>
+    <div class="section_body">
+        <div class="padTB4"  *ngFor="let bill of billsdata; let i=index;">
+            <div class="row">
+                <div class="col-2 col-md-2 col-lg-2">
+                    &nbsp;
+                </div>
+                <div class="col-3 col-md-3 col-lg-3 val_col">
+                    <div class="billaccep_txt text-center">
+                        <div class="value_type">
+                            {{bill.amount}}
+                        </div>
+                        <div class="value_symbol">
+                           <span> X</span>
+                        </div>                        
+                    </div>
+                </div>                
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput MarLm28">
+                        <input type="text" style="color:white" class="form-control-sm" id="" aria-describedby="cash" [(ngModel)]="bill.count" disabled>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="billaccep_txt">
+                        <span class="value_symbol_left">=</span>{{bill.sum | currency}}
+                    </div>
+                </div>
+                <div class="col-1 col-md-1 col-lg-1">
+                    &nbsp;
+                </div>
+            </div>
+        </div>        
+    </div>
+    <div class="section_footer text-center">
+        <div class="footer_total">
+            <div class="row">
+                <div class="col-2 col-md-2 col-lg-2">
+                    &nbsp;
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="billaccep_txt tvalue_txt text-center">
+                        Total Value 
+                    </div>
+                </div>                
+                <div class="col-3 col-md-3 col-lg-3">
+                    &nbsp;
+                </div>                
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="billaccep_txt text-left">
+                        <span class="value_symbol_left">=</span>{{sum | currency}}
+                    </div>
+                </div>
+                <div class="col-1 col-md-1 col-lg-1">
+                    &nbsp;
+                </div>                             
+            </div>
+        </div>
+        <button type="button" class="btn cprimary_btn" (click)="openMainsafeLock()">Open MainSafe Door</button>
+        <button type="button" class="btn cprimary_btn" (click)="processInsertBills()">Done</button>
+        <button [disabled]="isSendRequest" type="button" class="btn cprimary_btn" (click)="sendRequest()">Send Request</button>
+    </div> 
+    <div class="modal1" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content1">
+                <div class="modal-header">
+                    <h5 class="modal-title">Denominations</h5>
+                </div>
+                <div class="modal-body">
+                    <h2>{{dynamicText}}</h2>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" (click)="closePopup()">
+                       Ok
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ngx-loader [show]="show" [fullScreen] = "fullScreen" [template]="template"> Loading... </ngx-loader>
+</div>
+<!-- Change Insert Bills Component Ends Here -->

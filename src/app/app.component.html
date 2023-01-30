@@ -1,0 +1,42 @@
+<section class="height100">
+    <div class="container height100">
+        <div class="main_content height100">
+            <div class="height100">
+                <div class="nav_part">
+                    <div class="option_home" routerLink="/homenav">
+                        <i class="fas fa-home col_fuzzypeach"></i>
+                    </div>
+                    <div class="option_back">
+                        <i class="fas fa-arrow-circle-left col_fuzzypeach" (click)="backClicked()"></i>
+                    </div>
+                </div>
+                <!-- <div class="header_part">
+                    <div class="project_title">SMART SAFE</div>
+                    <div class="page_name">Home</div>
+                </div> -->
+                <div class="body_part height100">
+                    <!-- <app-menu></app-menu> -->
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Session Expired</h5>
+                </div>
+                <div class="modal-body">
+                    <h2>Please login to continue</h2>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" (click)="closePopup()">
+                       Ok
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ngx-loader [show]="show" [fullScreen] = "fullScreen" [template]="template"> Loading... </ngx-loader>
+</section>

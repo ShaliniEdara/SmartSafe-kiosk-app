@@ -1,0 +1,703 @@
+<!-- Change Request Component Starts Here  -->
+<div id="changerequest_content" class="changerequest_content ccontent_part">
+    <div class="section_header">
+        <div class="page_name">Change Request Details</div>
+    </div>
+    <div class="section_title">        
+        <div class="row">
+            
+            <div class="col-2 col-md-2 col-lg-2">
+                <div class="text-center">
+                    Denominations 
+                </div>
+            </div>
+            <div class="col-2 col-md-2 col-lg-2">
+                <div class="text-center labelColor">
+                   Current Bal
+                </div>
+            </div>
+            <div class="col-2 col-md-2 col-lg-2">
+                <div class="labelColor">
+                   MainSafe Bal
+                </div>
+            </div>            
+            <div class="col-3 col-md-3 col-lg-3">
+                <div class="labelColor">
+                    Recommended Change
+                </div>
+            </div>
+            <div class="col-3 col-md-3 col-lg-3">
+                <div class="labelColor">
+                    Deposited Val
+                </div>
+            </div>
+        </div>
+    </div>
+    <form [formGroup]="SetChangeDenominationsFormValues"> 
+    <div class="section_body shift_managerDiv">
+        <div class="padTB4">
+            <div class="row">
+                
+                <div class="col-2 col-md-2 col-lg-2 val_col">
+                    <div class="billaccep_txt text-center">
+                        <div class="value_type">
+                            Pennies
+                        </div>
+                        <div class="value_symbol">
+                           <span> -</span>
+                        </div>                        
+                    </div>
+                </div>    
+                <div class="col-2 col-md-2 col-lg-2">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="TotalPenniesFormValues" id="" aria-describedby="cash" readonly>
+                    </div> 
+                </div>            
+                <div class="col-2 col-md-2 col-lg-2">                   
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="MainsafePenniesFormValues" id="" aria-describedby="cash" readonly>
+                    </div>                   
+                </div>  
+                
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <select class="form-select form-select-sm" formControlName="NewPenniesFormValues" (change)="selectChangeHandler($event,'Pennies','MAINSAFE')">
+                            <option *ngFor="let pennies of PenniesFormListvalues" value="{{pennies.value}}">
+                                {{pennies.name}}
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>
+               
+                <div class="col-3 col-md-3 col-lg-3" style="pointer-events: none; opacity: 0.6 !important;" >
+                    <div class="cinput">
+                        <select class="form-select form-select-sm" formControlName="DepositePenniesFormValues" (change)="selectChangeHandler($event,'DepositePennies','MAINSAFE')">
+                            <option *ngFor="let pennies of PenniesFormListvalues" value="{{pennies.value}}">
+                                {{pennies.name}}
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+        <div class="padTB4">
+            <div class="row">
+                
+                <div class="col-2 col-md-2 col-lg-2 val_col">                   
+                    <div class="billaccep_txt text-center">
+                        <div class="value_type">
+                            Nickels 
+                        </div>
+                        <div class="value_symbol">
+                           <span> -</span>
+                        </div>                        
+                    </div>
+                </div>    
+                <div class="col-2 col-md-2 col-lg-2">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="TotalNickelsFormValues" id="" aria-describedby="cash" readonly>
+                    </div> 
+                </div>   
+              
+                <div class="col-2 col-md-2 col-lg-2">                   
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="MainsafeNickelsFormValues" id="" aria-describedby="cash" readonly>
+                    </div>                   
+                </div>   
+
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="NewNickelsFormValues" (change)="selectChangeHandler($event,'Nickels','MAINSAFE')">
+                                            
+                            <option *ngFor="let nickels of NickelsFormListvalues" value="{{nickels.value}}">
+                                {{nickels.name}}
+                            </option>
+                            
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3" style="pointer-events: none; opacity: 0.6 !important;" >
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="DepositeNickelsFormValues" (change)="selectChangeHandler($event,'DepositeNickels','MAINSAFE')">
+                                            
+                            <option *ngFor="let nickels of NickelsFormListvalues" value="{{nickels.value}}">
+                                {{nickels.name}}
+                            </option>
+                            
+                        </select>
+                    </div>
+                </div>
+                
+              
+            </div>
+        </div>
+        <div class="padTB4">
+            <div class="row">
+                
+                <div class="col-2 col-md-2 col-lg-2 val_col">                    
+                    <div class="billaccep_txt text-center">
+                        <div class="value_type">
+                            Dimes
+                        </div>
+                        <div class="value_symbol">
+                           <span> -</span>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="TotalDimesFromValues" id="" aria-describedby="cash" readonly>
+                    </div> 
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">                   
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="MainsafeDimesFromValues" id="" aria-describedby="cash" readonly>
+                    </div>                   
+                </div>  
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="NewDimesFromValues" (change)="selectChangeHandler($event,'Dimes','MAINSAFE')"> 
+                                            
+                            <option *ngFor="let dimes of DimesFromListValues" value="{{dimes.value}}">
+                                {{dimes.name}}
+                            </option>
+                            
+                            
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3" style="pointer-events: none; opacity: 0.6 !important;" >
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="DepositeDimesFromValues" (change)="selectChangeHandler($event,'DepositeDimes','MAINSAFE')"> 
+                                            
+                            <option *ngFor="let dimes of DimesFromListValues" value="{{dimes.value}}">
+                                {{dimes.name}}
+                            </option>
+                            
+                            
+                        </select>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+        <div class="padTB4">
+            <div class="row">
+                
+                <div class="col-2 col-md-2 col-lg-2 val_col">
+                    <div class="billaccep_txt text-center">
+                        <div class="value_type">
+                            Quarters
+                        </div>
+                        <div class="value_symbol">
+                           <span> -</span>
+                        </div>                        
+                    </div>
+                </div>         
+                <div class="col-2 col-md-2 col-lg-2">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="TotalQuartersFormValues" id="" aria-describedby="cash" readonly>
+                    </div> 
+                </div>       
+                <div class="col-2 col-md-2 col-lg-2">                   
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="MainsafeQuartersFormValues" id="" aria-describedby="cash" readonly>
+                    </div>                   
+                </div> 
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="NewQuartersFormValues" (change)="selectChangeHandler($event,'Quarters','MAINSAFE')">
+                                            
+                            <option *ngFor="let quarters of QuartersFormListValues" value="{{quarters.value}}">
+                                {{quarters.name}}
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3" style="pointer-events: none; opacity: 0.6 !important;" >
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="DepositeQuartersFormValues" (change)="selectChangeHandler($event,'DepositeQuarters','MAINSAFE')">
+                                            
+                            <option *ngFor="let quarters of QuartersFormListValues" value="{{quarters.value}}">
+                                {{quarters.name}}
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>        
+        <div class="padTB4">
+            <div class="row">
+                
+                <div class="col-2 col-md-2 col-lg-2 val_col">                    
+                    <div class="billaccep_txt text-center">
+                        <div class="value_type">
+                            1$
+                        </div>
+                        <div class="value_symbol">
+                           <span> -</span>
+                        </div>                        
+                    </div>
+                </div>      
+                <div class="col-2 col-md-2 col-lg-2">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="TotalOneDollarFormValues" id="" aria-describedby="cash" readonly>
+                    </div> 
+                </div>          
+
+                <div class="col-2 col-md-2 col-lg-2">                   
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="MainsafeOneDollarFormValues" id="" aria-describedby="cash" readonly>
+                    </div>                   
+                </div>  
+
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="NewOneDollarFormValues" (change)="selectChangeHandler($event,'Onedollar','MAINSAFE')">
+                                            
+                                            
+                            <option *ngFor="let one of OneDollarFormListValues" value="{{one.value}}">
+                                {{one.name}}
+                            </option>
+                            
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="DepositeOneDollarFormValues" (change)="selectChangeHandler($event,'DepositeOnedollar','MAINSAFE')">
+                                            
+                                            
+                            <option *ngFor="let one of DpOneDollarFormListValues" value="{{one.value}}">
+                                {{one.name}}
+                            </option>
+                            
+                        </select>
+                    </div>
+                </div>                
+                
+              
+            </div>
+        </div>        
+        <!-- <div class="padTB4">
+            <div class="row">
+                <div class="col-sm-1">
+                    &nbsp;
+                </div>
+                <div class="col-3 col-md-3 col-lg-3 val_col">                    
+                    <div class="billaccep_txt text-center">
+                        <div class="value_type">
+                            2$
+                        </div>
+                        <div class="value_symbol">
+                           <span> -</span>
+                        </div>                        
+                    </div>
+                </div>                
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="NewOneDollarFormValues" (change)="selectChangeHandler($event,'Onedollar','MAINSAFE')">
+                                            
+                                            
+                            <option *ngFor="let two of TwoDollarFormListValues" value="{{two.value}}">
+                                {{two.name}}
+                            </option>
+                            
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="DepositeOneDollarFormValues" (change)="selectChangeHandler($event,'DepositeOnedollar','MAINSAFE')">
+                                            
+                                            
+                            <option *ngFor="let two of TwoDollarFormListValues" value="{{two.value}}">
+                                {{two.name}}
+                            </option>
+                            
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    &nbsp;
+                </div>
+            </div>
+        </div> -->
+        <!-- <div class="padTB4">
+            <div class="row">
+                <div class="col-4 col-md-4 col-lg-4">
+                    <div class="billaccep_txt">
+                        2$
+                    </div>
+                </div>
+                <div class="col-1 col-md-1 col-lg-1">
+                    <div class="billaccep_txt">
+                         -
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <select class="form-select form-select-sm">
+                            <option selected>Select</option>
+                            <option value="100">100</option>
+                            <option value="150">150</option>
+                            <option value="200">200</option>
+                            <option value="250">250</option>
+                            <option value="300">300</option>
+                            <option value="350">350</option>
+                            <option value="400">400</option>
+                            <option value="450">450</option>
+                            <option value="500">500</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-1 col-md-1 col-lg-1">
+                    <div class="billaccep_txt">
+                        =
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="billaccep_txt">
+                        Result
+                    </div>
+                </div>
+            </div>
+        </div>         -->
+        <div class="padTB4">
+            <div class="row">
+                
+                <div class="col-2 col-md-2 col-lg-2 val_col">                    
+                    <div class="billaccep_txt text-center">
+                        <div class="value_type">
+                            5$
+                        </div>
+                        <div class="value_symbol">
+                           <span> -</span>
+                        </div>                        
+                    </div>
+                </div>  
+                <div class="col-2 col-md-2 col-lg-2">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="TotalFiveDollarFormValues" id="" aria-describedby="cash" readonly>
+                    </div> 
+                </div>       
+
+                <div class="col-2 col-md-2 col-lg-2">                   
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="MainsafeFiveDollarFormValues" id="" aria-describedby="cash" readonly>
+                    </div>                   
+                </div>  
+
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="NewFiveDollarFormValues" (change)="selectChangeHandler($event,'Fivedollar','MAINSAFE')">
+                                            
+                            <option *ngFor="let five of FiveDollarFormListValues" value="{{five.value}}">
+                                {{five.name}}
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="DepositeFiveDollarFormValues" (change)="selectChangeHandler($event,'DepositeFivedollar','MAINSAFE')">
+                                            
+                            <option *ngFor="let five of DpFiveDollarFormListValues" value="{{five.value}}">
+                                {{five.name}}
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>
+                
+            
+            </div>
+        </div>
+        <div class="padTB4">
+            <div class="row">
+                
+                <div class="col-2 col-md-2 col-lg-2 val_col">                   
+                    <div class="billaccep_txt text-center">
+                        <div class="value_type">
+                            10$
+                        </div>
+                        <div class="value_symbol">
+                           <span> -</span>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="TotalTenDollarFormValues" id="" aria-describedby="cash" readonly>
+                    </div> 
+                </div> 
+                <div class="col-2 col-md-2 col-lg-2">                   
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="MainsafeTenDollarFormValues" id="" aria-describedby="cash" readonly>
+                    </div>                   
+                </div>  
+                <div class="col-3 col-md-3 col-lg-3" style="pointer-events: none; opacity: 0.6 !important;" >
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="NewTenDollarFormValues" (change)="selectChangeHandler($event,'Tendollar','MAINSAFE')">
+                                            
+                            <option *ngFor="let ten of TenDollarFormListValues" value="{{ten.value}}">
+                                {{ten.name}}
+                            </option>
+                            
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="DepositeTenDollarFormValues" (change)="selectChangeHandler($event,'DepositeTendollar','MAINSAFE')">
+                                            
+                            <option *ngFor="let ten of DpTenDollarFormListValues" value="{{ten.value}}">
+                                {{ten.name}}
+                            </option>
+                            
+                        </select>
+                    </div>
+                </div>
+                
+              
+            </div>
+        </div>
+        <div class="padTB4">
+            <div class="row">
+                
+                <div class="col-2 col-md-2 col-lg-2 val_col">                    
+                    <div class="billaccep_txt text-center">
+                        <div class="value_type">
+                            20$
+                        </div>
+                        <div class="value_symbol">
+                           <span> -</span>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="TotalTwentyDollarFormValues" id="" aria-describedby="cash" readonly>
+                    </div> 
+                </div> 
+                <div class="col-2 col-md-2 col-lg-2">                   
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="MainsafeTwentyDollarFormValues" id="" aria-describedby="cash" readonly>
+                    </div>                   
+                </div> 
+                <div class="col-3 col-md-3 col-lg-3" style="pointer-events: none; opacity: 0.6 !important;" >
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="NewTwentyDollarFormValues" (change)="selectChangeHandler($event,'Twentydollar','MAINSAFE')">
+                                            
+                            <option *ngFor="let twenty of TwentyDollarFormListValues" value="{{twenty.value}}">
+                                {{twenty.name}}
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="DepositeTwentyDollarFormValues" (change)="selectChangeHandler($event,'DepositeTwentydollar','MAINSAFE')">
+                                            
+                            <option *ngFor="let twenty of DpTwentyDollarFormListValues" value="{{twenty.value}}">
+                                {{twenty.name}}
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>
+                
+              
+            </div>
+        </div>
+        <div class="padTB4">
+            <div class="row">  
+                
+                <div class="col-2 col-md-2 col-lg-2 val_col">                    
+                    <div class="billaccep_txt text-center">
+                        <div class="value_type">
+                            50$
+                        </div>
+                        <div class="value_symbol">
+                           <span> -</span>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="TotalFiftyDollarFormValue" id="" aria-describedby="cash" readonly>
+                    </div> 
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">                   
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="MainsafeFiftyDollarFormValue" id="" aria-describedby="cash" readonly>
+                    </div>                   
+                </div>  
+                <div class="col-3 col-md-3 col-lg-3" style="pointer-events: none; opacity: 0.6 !important;" >
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="NewFiftyDollarFormValue" (change)="selectChangeHandler($event,'Fiftydollar','MAINSAFE')">
+                                            
+                            <option *ngFor="let Fifty of FiftyDollarFromListValues" value="{{Fifty.value}}">
+                                {{Fifty.name}}
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="DepositeFiftyDollarFormValue" (change)="selectChangeHandler($event,'DepositeFiftydollar','MAINSAFE')">
+                                            
+                            <option *ngFor="let Fifty of DpFiftyDollarFromListValues" value="{{Fifty.value}}">
+                                {{Fifty.name}}
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>
+               
+             
+            </div>
+        </div>
+        <div class="padTB4">
+            <div class="row">
+                
+                <div class="col-2 col-md-2 col-lg-2 val_col">
+                    <div class="billaccep_txt text-center">
+                        <div class="value_type">
+                            100$
+                        </div>
+                        <div class="value_symbol">
+                           <span> -</span>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="TotalHundredDollarFormValue" id="" aria-describedby="cash" readonly>
+                    </div> 
+                </div> 
+                <div class="col-2 col-md-2 col-lg-2">                   
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="MainsafeHundredDollarFormValue" id="" aria-describedby="cash" readonly>
+                    </div>                   
+                </div> 
+                <div class="col-3 col-md-3 col-lg-3" style="pointer-events: none; opacity: 0.6 !important;" >
+                    <div class="cinput">
+                        <select  class="form-select form-select-sm common_select" formControlName="NewHundredDollarFormValue" (change)="selectChangeHandler($event,'Hundreddollar','MAINSAFE')">
+                                            
+                            <option *ngFor="let Hundred of HundredDollarFromListValues" value="{{Hundred.value}}">
+                                {{Hundred.name}}
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="DepositeHundredDollarFormValue" (change)="selectChangeHandler($event,'DepositeHundreddollar','MAINSAFE')">
+                                            
+                            <option *ngFor="let Hundred of DpHundredDollarFromListValues" value="{{Hundred.value}}">
+                                {{Hundred.name}}
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>
+               
+            
+            </div>
+        </div>
+    </div>
+    <div class="section_footer text-center">
+        <div class="footer_total">
+            <div class="row">
+                <div class="col-2 col-md-2 col-lg-2">
+                    <div class="billaccep_txt tvalue_txt">
+                        Total Value
+                    </div>
+                </div> 
+                <div class="col-2 col-md-2 col-lg-2">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm" value="${{TotalMSandSH}}" aria-describedby="cash" readonly>
+                    </div>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">                    
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm" value="${{MainTotalValue}}" aria-describedby="cash" readonly>
+                    </div>
+                </div>    
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm redNewTotal" value="${{newTotalValue}}" aria-describedby="cash" readonly>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm redDepositeTotal" value="${{DepositedTotalValue}}" aria-describedby="cash" readonly>
+                    </div>
+                </div>
+                           
+            </div>
+        </div>
+        <button type="button" class="btn cprimary_btn" data-bs-toggle="modal" [disabled]="isRaiseRequest" (click)="Raiserequest()">
+            Raise Request
+        </button>        
+        <button type="button" class="btn cprimary_btn" (click)="RaiserequestCencel()">Cancel</button>
+        <!-- <button type="button" class="btn cprimary_btn" [disabled]="isPrint">Print</button> -->
+        <button [hidden]="isHideDrop" type="button" class="btn cprimary_btn" (click)="next()">Next</button>
+    </div>
+</form>
+</div>
+<!-- Change Request Component Ends Here -->
+<!-- Raise Request Popup Starts Here -->
+  <!-- Modal -->
+  <!-- <div class="modal1 fade common_modal" id="raise_request" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="raise_request" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content1">
+        <div class="modal-header">          
+        </div>
+        <div class="modal-body">
+          <div class="icon_box">
+            X
+          </div>
+          
+          <div class="sub_text">
+            Change request not balanced.. Please Balance
+          </div>
+        </div>
+        <div class="modal-footer">          
+          <button type="button" class="btn caccept_btn" data-bs-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div class="modal1" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content1">
+            <div class="modal-header">
+                <h5 class="modal-title">Denominations</h5>
+            </div>
+            <div class="modal-body">
+                <h2>{{dynamicText}}</h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="closePopup()">
+                   Ok
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+  <ngx-loader [show]="show" [fullScreen] = "fullScreen" [template]="template"> Loading... </ngx-loader>
+  <!-- Modal -->
+ <!-- Raise Request Popup Starts Here -->

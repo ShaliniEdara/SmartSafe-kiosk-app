@@ -1,0 +1,62 @@
+<!-- Add Truck Component Starts Here-->
+<div id="addtruck_content" class="addtruck_content ccontent_part">
+    <div class="section_header">
+        <div class="page_name">Add Truck Manager</div>
+    </div>
+    <div class="section_title">
+        
+    </div>
+    <form [formGroup]="form">
+    <div class="section_body">
+        <div class="row">
+            <div class="col-12 col-md-4 col-lg-4">
+                <div class="cli_box">
+                    <div class="clabel">
+                        <label for="company_name" class="form-label">COMPANY NAME</label>
+                    </div>
+                    <div class="cinput">
+                        <input type="text" matKeyboard="locale" 
+                        class="form-control" id="company_name" aria-describedby="company_name" placeholder="Enter Company Name" >
+                        <!-- <input type="text" class="form-control" id="company_name" placeholder="Enter Company Name"> -->
+                    </div>
+                </div> 
+            </div>
+            <div class="col-12 col-md-4 col-lg-4">
+                <div class="cli_box">
+                    <div class="clabel">
+                        <label for="email" class="form-label">EMAIL</label>
+                    </div>
+                    <div class="cinput">
+                        <input type="email" matKeyboard="locale" formControlName="emailIn"
+                        class="form-control" id="email" aria-describedby="email" placeholder="Enter Email">
+                        <div style="color: red;font-weight: bold"  *ngIf="form.controls.emailIn.errors?.pattern">
+                           Enter the valid Email
+                          </div>
+                        <!-- <input type="email" class="form-control" id="email" placeholder="Enter Email"> -->
+                    </div>
+                </div> 
+            </div>
+            <div class="col-12 col-md-4 col-lg-4">
+                <div class="cli_box">
+                    <div class="clabel">
+                        <label for="cno" class="form-label">CONTACT NUMBER</label>
+                    </div>
+                    <div class="cinput">
+                        <input matKeyboard="'de-CH'" class="form-control"
+                        type="text"
+                        appPhoneMask 
+                        formControlName="phone"
+                        id="phone-number"
+                        placeholder="Enter Contact Number"> 
+                        <!-- <input type="number" class="form-control" id="cno" placeholder="Enter Contact Number"> -->
+                    </div>
+                </div> 
+            </div>
+        </div>                                
+    </div>
+    <div class="section_footer">
+        <button type="button" class="btn cprimary_btn">ADD TRUCK</button>
+    </div>
+    </form>
+</div>
+<!-- Add Truck Component Ends Here-->

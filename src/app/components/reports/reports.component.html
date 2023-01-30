@@ -1,0 +1,76 @@
+<!-- Reports Component Starts Here -->
+<div id="reports_content" class="reports_content clpadding height100">
+    <div class="section_header">
+        <div class="page_name">Reports</div>
+    </div>
+    <div class="row height100">
+        <div class="col-4 col-md-4 col-lg-4 pad12">            
+            <div class="option" (click)="goTestReport()">
+                <div class="option_icon text-center">
+                    <i class="fas fa-vial col_frenchpink"></i>
+                </div>
+                <div class="options_label text-center">
+                    Test <span class="col_frenchpink">Report</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 col-md-4 col-lg-4 pad12">
+            <div class="option" (click)="gotRePrintReceipt()">
+                <div class="option_icon text-center">
+                    <i class="fas fa-print col_sunnymorning"></i>
+                </div>
+                <div class="options_label text-center">
+                    Reprint <span class="col_sunnymorning">Report</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 col-md-4 col-lg-4 pad12">
+            <div class="option" (click)="goEndOfTheDayReport()">
+                <div class="option_icon text-center">
+                    <i class="fas fa-calendar-day col_weirdgreen"></i>
+                </div>
+                <div class="options_label text-center">
+                    End <span class="col_weirdgreen">of the day report</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 col-md-4 col-lg-4 pad12">
+            <div class="option" (click)="gotoEmployeeReport()">
+                <div class="option_icon text-center">
+                    <i class="fas fa-users col_eyeshadowblue"></i>
+                </div>
+                <div class="options_label text-center">
+                    Employee <span class="col_eyeshadowblue">report</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 col-md-4 col-lg-4 pad12">
+            <div class="option"  (click)="gotoManagerReport()">
+                <div class="option_icon text-center">
+                    <i class="fas fa-user-secret col_coraldust"></i>
+                </div>
+                <div class="options_label text-center">
+                    Manager <span class="col_coraldust">report</span>
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>
+<div class="modal1" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content1">
+            <div class="modal-header">
+                <h5 class="modal-title">Denominations</h5>
+            </div>
+            <div class="modal-body">
+                <h2>{{dynamicText}}</h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="closePopup()">
+                   Ok
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Reports Component Ends Here -->

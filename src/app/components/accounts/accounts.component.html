@@ -1,0 +1,62 @@
+<!-- Accounts Component Starts Here -->
+  
+<div id="account_content" class="account_content clpadding height100">
+    <div class="section_header">
+        <div class="page_name">Accounts</div>
+    </div>
+    <div class="row height100">
+        <div class="col-4 col-md-4 col-lg-4 pad12">            
+            <div class="option" (click)="gotoEmployee()">
+                <div class="option_icon text-center">
+                    <i class="fas fa-user-tie col_frenchpink"></i>
+                </div>
+                <div class="options_label text-center">
+                    Employee
+                </div>
+            </div>
+        </div>
+        <div class="col-4 col-md-4 col-lg-4 pad12">
+            <div class="option" (click)="gotoManager()">
+                <div class="option_icon text-center">
+                    <i class="fas fa-user-secret col_sunnymorning"></i>
+                </div>
+                <div class="options_label text-center">
+                    Manager
+                </div>
+            </div>
+        </div>   
+        
+        <div class="col-4 col-md-4 col-lg-4 pad12">
+            <div class="option" (click)="gotoShiftManager()" >
+                <div class="option_icon text-center">
+                    <i class="fas fa-user-secret col_weirdgreen"></i>
+                </div>
+                <div class="options_label text-center">
+                    Shift <span class="col_weirdgreen">Manager</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4 col-md-4 col-lg-4 pad12">
+            <div class="option" (click)="gotoRoleAccess()">
+                <div class="option_icon text-center">
+                    <i class="fas fa-user-lock col_eyeshadowblue"></i>
+                </div>
+                <div class="options_label text-center">
+                    Role <span class="col_eyeshadowblue">Access</span>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col-4 col-md-4 col-lg-4 pad12">
+            <div class="option" (click)="gotoTruck()" >
+                <div class="option_icon text-center">
+                    <i class="fas fa-user-tie col_frenchpink"></i>
+                </div>
+                <div class="options_label text-center">
+                   Truck
+                </div>
+            </div>
+        </div>    -->
+    </div>
+</div>
+<!-- Accounts Component Ends Here-->

@@ -1,0 +1,597 @@
+<!-- changetruckconfirmrequest Component Starts Here -->
+<div id="changetruckconfirmrequest_content" class="changetruckconfirmrequest_content ccontent_part">
+    <div class="section_header">
+        <div class="page_name">Truck Change Request</div>
+    </div>
+    <div class="section_title">        
+        <div class="row main_title_bpad">
+            <div class="col-2 col-md-2 col-lg-2">
+                &nbsp;
+            </div>
+            <div class="col-5 col-md-5 col-lg-5">
+                Change Request Details of {{userName}}
+            </div>
+            <div class="col-3 col-md-3 col-lg-3 text-right">
+                <button type="button" class="btn cprimary_btn">${{staticTotalValue}}</button>
+            </div>
+            <div class="col-1 col-md-1 col-lg-1">
+                &nbsp;
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 col-md-3 col-lg-3">
+                <div class="">
+                    &nbsp;
+                </div>
+            </div>
+            <div class="col-3 col-md-3 col-lg-3">
+                <div class="">
+                    Denominations
+                </div>
+            </div>
+            <div class="col-3 col-md-3 col-lg-3">
+                <div class="MarLm28 labelColor">
+                    Change Requested
+                </div>
+            </div>
+            <!-- <div class="col-3 col-md-3 col-lg-3 padL32">
+                <div class="">
+                    $ Amount
+                </div>
+            </div> -->
+            <div class="col-3 col-md-3 col-lg-3">
+                <div class="">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+    <form [formGroup]="SetTruckChangeDenominationsFormValues"> 
+    <div class="section_body main_safeDiv">
+        <div class="padTB4">
+            <div class="row">
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="">
+                        &nbsp;
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="billaccep_txt">
+                        <div class="value_type">
+                            Pennies
+                        </div>
+                        <div class="value_symbol">
+                           <span>-</span>
+                        </div>                        
+                    </div>
+                </div>                
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput MarLm28">
+                        <select class="form-select form-select-sm" formControlName="TruckChangePenniesFormValues" (change)="selectChangeHandler($event,'Pennies','MAINSAFE')">
+                            <option *ngFor="let pennies of PenniesFormListvalues" value="{{pennies.value}}">
+                                {{pennies.name}}
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>                
+                <!-- <div class="col-3 col-md-3 col-lg-3 padL32">
+                    <div class="billaccep_txt">
+                       <span class="value_symbol_left">=</span>Result
+                    </div>
+                </div> -->
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="padTB4">
+            <div class="row">
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="">
+                        &nbsp;
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="billaccep_txt">
+                        <div class="value_type">
+                            Nickels 
+                        </div>
+                        <div class="value_symbol">
+                           <span>-</span>
+                        </div>                        
+                    </div>
+                </div>                
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput MarLm28">
+                        <select class="form-select form-select-sm" formControlName="TruckChangeNickelsFormValues" (change)="selectChangeHandler($event,'Nickels','MAINSAFE')">
+                            <option *ngFor="let pennies of NickelsFormListvalues" value="{{pennies.value}}">
+                                {{pennies.name}}
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>                
+                <!-- <div class="col-3 col-md-3 col-lg-3 padL32">
+                    <div class="billaccep_txt">
+                        <span class="value_symbol_left">=</span>Result
+                    </div>
+                </div> -->
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="padTB4">
+            <div class="row">
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="">
+                        &nbsp;
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="billaccep_txt">
+                        <div class="value_type">
+                            Dimes
+                        </div>
+                        <div class="value_symbol">
+                           <span>-</span>
+                        </div>                        
+                    </div>
+                </div>                
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput MarLm28">
+                        <select class="form-select form-select-sm" formControlName="TruckChangeDimesFromValues" (change)="selectChangeHandler($event,'Dimes','MAINSAFE')">
+                            <option *ngFor="let dimes of DimesFromListValues" value="{{dimes.value}}">
+                                {{dimes.name}}
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>                
+                <!-- <div class="col-3 col-md-3 col-lg-3 padL32">
+                    <div class="billaccep_txt">
+                        <span class="value_symbol_left">=</span>Result
+                    </div>
+                </div> -->
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="padTB4">
+            <div class="row">
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="">
+                        &nbsp;
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="billaccep_txt">
+                        <div class="value_type">
+                            Quarters
+                        </div>
+                        <div class="value_symbol">
+                           <span>-</span>
+                        </div>                        
+                    </div>
+                </div>                
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput MarLm28">
+                        <select class="form-select form-select-sm common_select" formControlName="TruckChangeQuartersFormValues" (change)="selectChangeHandler($event,'Quarters','MAINSAFE')">
+                                            
+                            <option *ngFor="let quarters of QuartersFormListValues" value="{{quarters.value}}">
+                                {{quarters.name}}
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>                
+                <!-- <div class="col-3 col-md-3 col-lg-3 padL32">
+                    <div class="billaccep_txt">
+                        <span class="value_symbol_left">=</span>Result
+                    </div>
+                </div> -->
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="padTB4">
+            <div class="row">
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="">
+                        &nbsp;
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="billaccep_txt">
+                        <div class="value_type">
+                            1$
+                        </div>
+                        <div class="value_symbol">
+                           <span>-</span>
+                        </div>                        
+                    </div>
+                </div>                
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput MarLm28">
+                        <select class="form-select form-select-sm common_select" formControlName="TruckChangeOneDollarFormValues" (change)="selectChangeHandler($event,'Onedollar','MAINSAFE')">
+                                            
+                                            
+                            <option *ngFor="let one of OneDollarFormListValues" value="{{one.value}}">
+                                {{one.name}}
+                            </option>
+                            
+                        </select>
+                    </div>
+                </div>                
+                <!-- <div class="col-3 col-md-3 col-lg-3 padL32">
+                    <div class="billaccep_txt">
+                        <span class="value_symbol_left">=</span>Result
+                    </div>
+                </div> -->
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="padTB4">
+            <div class="row">
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="">
+                        &nbsp;
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="billaccep_txt">
+                        <div class="value_type">
+                            2$
+                        </div>
+                        <div class="value_symbol">
+                           <span>-</span>
+                        </div>                        
+                    </div>
+                </div>                
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput MarLm28">
+                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" disabled>
+                    </div>
+                </div>                
+                <div class="col-3 col-md-3 col-lg-3 padL32">
+                    <div class="billaccep_txt">
+                       <span class="value_symbol_left">=</span>Result
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="padTB4">
+            <div class="row">
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="">
+                        &nbsp;
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="billaccep_txt">
+                        <div class="value_type">
+                            5$
+                        </div>
+                        <div class="value_symbol">
+                           <span>-</span>
+                        </div>                        
+                    </div>
+                </div>                
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput MarLm28">
+                        <select class="form-select form-select-sm common_select" formControlName="TruckChangeFiveDollarFormValues" (change)="selectChangeHandler($event,'Fivedollar','MAINSAFE')">
+                                            
+                            <option *ngFor="let five of FiveDollarFormListValues" value="{{five.value}}">
+                                {{five.name}}
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>                
+                <!-- <div class="col-3 col-md-3 col-lg-3 padL32">
+                    <div class="billaccep_txt">
+                        <span class="value_symbol_left">=</span>Result
+                    </div>
+                </div> -->
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="padTB4">
+            <div class="row">
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="">
+                        &nbsp;
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="billaccep_txt">
+                        <div class="value_type">
+                            10$
+                        </div>
+                        <div class="value_symbol">
+                           <span>-</span>
+                        </div>                        
+                    </div>
+                </div>                
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput MarLm28">
+                        <select class="form-select form-select-sm common_select" formControlName="TruckChangeTenDollarFormValues" (change)="selectChangeHandler($event,'Tendollar','MAINSAFE')">
+                                            
+                            <option *ngFor="let ten of TenDollarFormListValues" value="{{ten.value}}">
+                                {{ten.name}}
+                            </option>
+                            
+                        </select>
+                    </div>
+                </div>                
+                <!-- <div class="col-3 col-md-3 col-lg-3 padL32">
+                    <div class="billaccep_txt">
+                        <span class="value_symbol_left">=</span>Result
+                    </div>
+                </div> -->
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="padTB4">
+            <div class="row">
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="">
+                        &nbsp;
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="billaccep_txt">
+                        <div class="value_type">
+                            20$
+                        </div>
+                        <div class="value_symbol">
+                           <span>-</span>
+                        </div>                        
+                    </div>
+                </div>                
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput MarLm28">
+                        <select class="form-select form-select-sm common_select" formControlName="TruckChangeTwentyDollarFormValues" (change)="selectChangeHandler($event,'Twentydollar','MAINSAFE')">
+                                            
+                            <option *ngFor="let twenty of TwentyDollarFormListValues" value="{{twenty.value}}">
+                                {{twenty.name}}
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>                
+                <!-- <div class="col-3 col-md-3 col-lg-3 padL32">
+                    <div class="billaccep_txt">
+                        <span class="value_symbol_left">=</span>Result
+                    </div>
+                </div> -->
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="padTB4">
+            <div class="row">
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="">
+                        &nbsp;
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="billaccep_txt">
+                        <div class="value_type">
+                            50$
+                        </div>
+                        <div class="value_symbol">
+                           <span>-</span>
+                        </div>                        
+                    </div>
+                </div>                
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput MarLm28">
+                        <select class="form-select form-select-sm">
+                            <option selected>Select</option>
+                            <option value="1">$50</option>
+                            <option value="2">$100</option>
+                            <option value="3">$150</option>
+                            <option value="4">$200</option>
+                            <option value="5">$250</option>
+                            <option value="6">$300</option>
+                            <option value="7">$350</option>
+                            <option value="8">$400</option>
+                            <option value="9">$450</option>
+                            <option value="10">$500</option>
+                        </select>
+                    </div>
+                </div>                
+                <div class="col-3 col-md-3 col-lg-3 padL32">
+                    <div class="billaccep_txt">
+                       = Result
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- <div class="padTB4">
+            <div class="row">
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="">
+                        &nbsp;
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="billaccep_txt">
+                        <div class="value_type">
+                            100$
+                        </div>
+                        <div class="value_symbol">
+                           <span>-</span>
+                        </div>                        
+                    </div>
+                </div>                
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput MarLm28">
+                        <select class="form-select form-select-sm">
+                            <option selected>Select</option>
+                            <option value="1">$100</option>
+                            <option value="2">$200</option>
+                            <option value="3">$300</option>
+                            <option value="4">$400</option>
+                            <option value="5">$500</option>
+                            <option value="6">$600</option>
+                            <option value="7">$700</option>
+                            <option value="8">$800</option>
+                            <option value="9">$900</option>
+                            <option value="10">$1,000</option>
+                        </select>
+                    </div>
+                </div>                
+                <div class="col-3 col-md-3 col-lg-3 padL32">
+                    <div class="billaccep_txt">
+                       = Result
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>         -->
+    </div>
+    <div class="section_footer text-center">
+        <div class="footer_total">
+            <div class="row">
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="">
+                        &nbsp;
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3 text-left">
+                    <div class="billaccep_txt tvalue_txt">
+                        Total Value
+                    </div>
+                </div>                
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput MarLm28">
+                        <input type="text" class="form-control-sm redNewTotal" value="${{newTotalValue}}" id="" aria-describedby="cash" readonly>
+                    </div>
+                </div> 
+                <!-- <div class="col-3 col-md-3 col-lg-3">
+                    <div class="">
+                        &nbsp;
+                    </div>
+                </div>   -->
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="">
+                        &nbsp;
+                    </div>
+                </div>              
+            </div>
+        </div>
+        <button [disabled]="confirmDisable" type="button" (click)="openConfirm()" class="btn cprimary_btn" data-bs-toggle="modal" data-bs-target="#confirm_request">
+            Confirm Request
+        </button> 
+        <!-- <button type="button" class="btn cprimary_btn" (click)="gotoPinPart()"></button> -->
+        <button type="button" class="btn cprimary_btn" (click)="editRequest()">{{ModifyRequest}}</button>
+        <button type="button" class="btn cprimary_btn" (click)="CancelRequestT()">Cancel</button>
+    </div>
+    <ngx-loader [show]="show" [fullScreen] = "fullScreen" [template]="template"> Loading... </ngx-loader>
+
+    </form>
+</div>
+<!-- changetruckconfirmrequest Component Ends Here -->
+<!-- Confirm Popup Starts Here -->
+  <!-- Button -->
+  
+  <!-- Button -->
+
+  <!-- Modal -->
+  <div class="modal1" role="dialog" [ngStyle]="{'display':displayStyleConfirm}">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content1">
+            <div class="modal-header">
+                <h5 class="modal-title">Status</h5>
+            </div>
+            <div class="modal-body">
+                <h2>  Is management available to confirm change </h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn ccancel_btn" data-bs-dismiss="modal" (click)="cancelConfirm()">No</button>
+                <button type="button" class="btn caccept_btn" data-bs-dismiss="modal" (click)="saveChangerequest()">Yes</button>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="modal1" role="dialog" [ngStyle]="{'display':displayStyleC}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content1">
+            <div class="modal-header">
+                <h5 class="modal-title">Status</h5>
+            </div>
+            <div class="modal-body">
+                <h2> Are you want to cancel Change Request?</h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="closePopupCancel()">
+                   No
+                </button>
+                <button type="button" class="btn caccept_btn" data-bs-dismiss="modal" (click)="cancelChageRequest()">Yes</button>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="modal1" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content1">
+            <div class="modal-header">
+                <h5 class="modal-title">Denominations</h5>
+            </div>
+            <div class="modal-body">
+                <h2>{{dynamicText}}</h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="closePopup()">
+                   Ok
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+  <!-- Modal -->
+ <!-- Confirm Popup Starts Here --> 

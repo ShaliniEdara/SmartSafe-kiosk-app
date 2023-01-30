@@ -1,0 +1,45 @@
+<!-- Doors Starts Here -->
+<div id="doors_content" class="doors_content clpadding height100">
+    <div class="section_header">
+        <div class="page_name">Smart Safe Access</div>
+    </div>
+    <div class="row height100">
+        <div class="col-3 col-md-6 col-lg-6 pad12" [hidden]="(!findAccess('ADMIN') || findAccess('SHIFTMANAGER')) &&  (findAccess('ADMIN') || !findAccess('SHIFTMANAGER')) && (findAccess('ADMIN') || !findAccess('MANAGER')) && (!findAccess('ADMIN') || findAccess('MANAGER'))">
+   
+            <div class="option" (click)="gotoChangeRequestDoorDenominations()"  >
+                <div class="option_icon text-center">
+                    <i class="fas fa-dungeon col_sunnymorning"></i>
+                </div>
+                <div class="options_label text-center">
+                    Shift <span class="col_sunnymorning">Manager change</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3 col-md-6 col-lg-6 pad12" [hidden]="(!findAccess('ADMIN') && !findAccess('MANAGER'))">
+  
+      <!--  <div class="col-6 col-md-6 col-lg-6 pad12" [hidden] ="!findAccess('ADMIN')">   -->         
+            <div class="option" (click)="gotoSbankoorsDenominations()" >
+                <div class="option_icon text-center">
+                    <i class="fas fa-door-closed col_frenchpink"></i>
+                </div>
+                <div class="options_label text-center">
+                    Main <span class="col_frenchpink">Safe change</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 col-md-3 col-lg-6 pad12" [hidden]="(!findAccess('ADMIN') && !findAccess('MANAGER'))">
+  
+            <!--  <div class="col-6 col-md-6 col-lg-6 pad12" [hidden] ="!findAccess('ADMIN')">   -->         
+                  <div class="option" (click)="gotoIntersafeDenominations()" >
+                      <div class="option_icon text-center">
+                          <i class="fas fa-door-open col_weirdgreen"></i>
+                      </div>
+                      <div class="options_label text-center">
+                        Inter <span class="col_weirdgreen">Safe Change</span>
+                      </div>
+                  </div>
+        </div>           
+    </div>
+</div>
+<!-- Doors Component Starts Here -->

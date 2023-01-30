@@ -1,0 +1,35 @@
+/*Submit OTP CSS Starts Here*/
+.submitotp
+{
+    width: 100%;
+}
+.submitotp_content
+{
+    padding-top: 30px;
+}
+.submitotp_content .section_footer
+{
+    position: initial;
+    padding-top: 16px;
+    text-align:center;
+}
+.generate_otc_btn
+{
+    margin-top: 12px;
+    margin-right: 0px;
+    float: right;
+    padding: 12px 40px;
+    border-radius: 4px;
+    background-color: transparent;
+    color: #ffffff;
+}
+.submitotp_content .section_footer .pin_submit {
+    width: 180px;
+    margin: 0 auto;
+}
+.otc_btn
+{
+    display:flex;
+    justify-content:center;
+}
+/*Submit OTP Ends Here*/

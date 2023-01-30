@@ -1,0 +1,66 @@
+/*Contact Us CSS Starts Here*/
+.contactus_content .option
+{
+    cursor: none;
+    padding: 40px;
+}
+.contactus_content .option:hover
+{
+    cursor: auto;
+    background-color: #363b5f;
+}
+.contact_type
+{
+    padding-bottom: 30px;
+}
+.contact_label 
+{
+    font-size: 14px;
+    font-weight: 400;
+    padding-bottom: 3px;
+}
+.contact_type_icon
+{
+    font-size: 14px;
+    color: #ffffff;
+    margin-right: 12px;
+    float: left;
+    text-align: left;
+}
+.contact_type_txt
+{
+    color: #a8a8a8;
+    font-size: 14px;
+    font-weight: 500;
+}
+.contactus_content .social_media ul
+{
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+}
+.social_item
+{
+    display: inline-block;
+    text-align: center;
+    padding-right: 16px;
+}
+.social_item a
+{
+    width: 36px;
+    height: 36px;
+    background-color: #ffffff;
+    display: block;
+    border-radius: 50%;
+}
+.social_item i
+{
+    text-align: center;
+    line-height: 36px;
+    color: #363b5f;
+}
+.social_media
+{
+    padding-top: 12px;
+}
+/*Contact Us CSS Ends Here*/

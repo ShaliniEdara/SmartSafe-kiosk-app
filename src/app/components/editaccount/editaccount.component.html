@@ -1,0 +1,60 @@
+<!-- Edit Account Component Starts Here-->
+<div id="editaccount_content" class="editaccount_content ccontent_part">
+    <div class="section_header">
+        <div class="page_name">View Account</div>
+    </div>
+    <div class="section_title">
+        <div class="row">
+            <div class="col-3 col-md-3 col-lg-3">
+                <div class="clabel">
+                    <label for="name" class="form-label">NAME</label>
+                </div>
+            </div>
+            <div class="col-3 col-md-3 col-lg-3">
+                <div class="clabel">
+                    <label for="cpin" class="form-label"> PIN</label>
+                </div>
+            </div>
+            <div class="col-3 col-md-3 col-lg-3">
+                <div class="clabel">
+                    <label for="pin" class="form-label">CONFIRM PIN</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section_body">
+        <!-- USer 1 -->        
+        <div class="row padTB4" *ngFor="let user of users; let i = index" >
+            <div class="col-3 col-md-3 col-lg-3">
+                <div class="cli_box">                   
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm" id="name" placeholder="Name"  [(ngModel)]="user.username" disabled>
+                    </div>
+                </div> 
+            </div>
+            <div class="col-3 col-md-3 col-lg-3">
+                <div class="cli_box">                    
+                    <div class="cinput">
+                        <input type="password" class="form-control-sm" id="pin" placeholder="Pin"  [(ngModel)]="user.password" disabled>
+                    </div>
+                </div> 
+            </div>
+            <div class="col-3 col-md-3 col-lg-3">
+                <div class="cli_box">                   
+                    <div class="cinput">
+                        <input type="password" class="form-control-sm" id="cpin" placeholder="Confirm Pin"  [(ngModel)]="user.password" disabled>
+                    </div>
+                </div> 
+            </div>
+            <!-- <div class="col-3 col-md-3 col-lg-3">
+                <div class="edit_btn">                   
+                    <button class="btn"><i class="fa fa-edit"></i>  Edit</button>
+                </div> 
+            </div> -->
+        </div>
+    </div>
+    <div class="section_footer">
+        
+    </div>
+</div>
+<!-- Edit Account Component Ends Here-->

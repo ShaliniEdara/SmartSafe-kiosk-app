@@ -1,0 +1,93 @@
+<!-- Pin Component Starts Here -->
+
+<div id="pinpart_content" class="pinpart_content ccontent_part">
+    <div class="section_header">
+        <div class="page_name">Pin Page</div>
+    </div>
+    <div class="section_title">
+            
+    </div>
+    <div class="section_body">
+        <div class="pin_section">
+            <form>
+                <div class="row custom_pin_width">
+                    <div class="col-12 col-md-12 col-lg-12">
+                        <div class="">
+                            <input type="password" (keypress)="onlyNumberKey($event)" [matKeyboard]="'locale'" [value]="123456789" min="0" max="9999" maxlength="4" class="form-control" id="pin" aria-describedby="pin"  placeholder="PIN" [(ngModel)]="user.password"  name="pin">                                                    
+                        </div>
+                    </div>
+                </div>
+            </form>                                    
+        </div>                            
+    </div>
+    <div class="section_footer">
+        <button type="button" class="btn btn-primary pin_submit" (click)="doLogin()">SUBMIT</button>
+    </div>
+    <div class="modal1" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content1">
+                <div class="modal-header">
+                    <h5 class="modal-title">Status</h5>
+                </div>
+                <div class="modal-body">
+                    <h2>{{dynamicText}}</h2>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" (click)="closePopup()">
+                       Ok
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   
+<!-- Pin Component Ends Here -->
+
+<script src="js/jquery.min.js"></script>
+<script src="js/keypad.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#pin').keyPad({
+            template : '#tpl-keypad',
+            isRandom : false,
+        });
+        $('#pin1').keyPad({
+            isRandom : true,
+        });
+    });
+</script>
+
+<script id="tpl-keypad" type="script/template">
+    <div class="keypad">
+        <table>
+            <colgroup>
+                <col width="33.33%">
+                <col width="33.33%">
+                <col width="33.33%">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td><button type="button" class="1">1</button></td>
+                    <td><button type="button" class="2">2</button></td>
+                    <td><button type="button" class="3">3</button></td>
+                </tr>
+                <tr>
+                    <td><button type="button" class="4">4</button></td>
+                    <td><button type="button" class="5">5</button></td>
+                    <td><button type="button" class="6">6</button></td>
+                </tr>
+                <tr>
+                    <td><button type="button" class="7">7</button></td>
+                    <td><button type="button" class="8">8</button></td>
+                    <td><button type="button" class="9">9</button></td>
+                </tr>
+                <tr>
+                    <td><button type="button" class="text-sm" cmd="clear">Clear</button></td>
+                    <td><button type="button" class="0">0</button></td>
+                    <td><button type="button" class="text-sm" cmd="back">Back</button></td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</script>    

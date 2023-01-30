@@ -1,0 +1,90 @@
+<!-- Add Account Component Starts Here-->
+<div id="addaccount_content" class="addaccount_content ccontent_part">
+    <div class="section_header">
+        <div class="page_name">Add Account</div>
+    </div>
+    <div class="section_title">
+        
+    </div>
+    <div class="section_body">
+        <div class="row">
+            <div class="col-12 col-md-4 col-lg-4">
+                <div class="cli_box">
+                    <div class="clabel">
+                        <label for="name" class="form-label">NAME</label>
+                    </div>
+                    <div class="cinput">
+                        <input type="text" matKeyboard="locale" [(ngModel)]="user.username"
+                                class="form-control" id="name" aria-describedby="name" placeholder="Name" [ngModelOptions]="{standalone: true}">
+                        <!-- <input type="text" class="form-control" id="name" placeholder="Name" [(ngModel)]="user.username"> -->
+                    </div>
+                </div> 
+            </div>
+            <div class="col-12 col-md-4 col-lg-4">
+                <div class="cli_box">
+                    <div class="clabel">
+                        <label for="pin" class="form-label">PIN</label>
+                    </div>
+                    <div class="cinput">
+                        <input type="password" (keypress)="onlyNumberKey($event)" [matKeyboard]="'locale'" min="0" max="9999" maxlength="4" class="form-control" id="pin" aria-describedby="pin"  placeholder="PIN" [(ngModel)]="user.password"  [ngModelOptions]="{standalone: true}">   
+                        <!-- <input type="number" class="form-control" id="pin" placeholder="Pin" [(ngModel)]="user.password"> -->
+                    </div>
+                </div> 
+            </div>
+            <div class="col-12 col-md-4 col-lg-4">
+                <div class="cli_box">
+                    <div class="clabel">
+                        <label for="cpin" class="form-label">CONFIRM PIN</label>
+                    </div>
+                    <div class="cinput">
+                        <input type="password" (keypress)="onlyNumberKey($event)" [matKeyboard]="'locale'" min="0" max="9999" maxlength="4" class="form-control" id="cpin" aria-describedby="pin"  placeholder="Confirm Pin" [(ngModel)]="user.confirmpassword"  [ngModelOptions]="{standalone: true}">   
+                        <!-- <input type="number" class="form-control" id="cpin" placeholder="Confirm Pin" [(ngModel)]="user.confirmpassword"> -->
+                    </div>
+                </div> 
+            </div>
+        </div>                                
+    </div>
+    <div class="section_footer">
+        <button type="button" class="btn cprimary_btn" data-bs-toggle="modal" data-bs-target="#raise_request"  (click)="addUser()">ADD</button>
+    </div>
+</div>
+<!-- Add Account Component Ends Here-->
+
+<!-- Raise Request Popup Starts Here -->
+  <!-- Modal -->
+  <!-- <div class="modal fade common_modal" id="raise_request" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="raise_request" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">          
+        </div>
+        <div class="modal-body">
+          
+          <div class="sub_text">
+            {{msg}}
+          </div>
+        </div>
+        <div class="modal-footer">          
+          <button type="button" class="btn caccept_btn" data-bs-dismiss="modal" routerLink="/empaccount">OK</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  
+  <div class="modal1" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content1">
+            <div class="modal-header">
+                <h5 class="modal-title">Denominations</h5>
+            </div>
+            <div class="modal-body">
+                <h2>{{dynamicText}}</h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="closePopup()">
+                   Ok
+                </button>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- Modal -->

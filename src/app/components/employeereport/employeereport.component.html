@@ -1,0 +1,65 @@
+<!-- Employee Report Component Starts Here -->
+<div id="employeereport_content" class="employeereport_content ccontent_part">
+    <div class="section_header">
+        <div class="page_name">Employee Report</div>
+    </div>
+    <div class="section_title">
+       
+    </div>
+    <div class="section_body">
+        <div class="row">
+            <div class="col-2 col-md-2 col-lg-2">
+                &nbsp;
+            </div>
+            <div class="col-4 col-md-4 col-lg-4">
+                <div class="cli_box">
+                    <div class="clabel">
+                        <label for="date">From</label>
+                    </div>
+                    <div class="cinput">
+                        <input type="date"  id="start_date" [(ngModel)]="startDate">                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 col-md-4 col-lg-4">
+                <div class="cli_box">
+                    <div class="clabel">
+                        <label for="date">To</label>
+                    </div>
+                    <div class="cinput">
+                        <input type="date" id="end_date" [(ngModel)]="endDate">
+                      
+                    </div>
+                </div> 
+            </div>
+            <div class="col-2 col-md-2 col-lg-2">
+                &nbsp;
+            </div>
+            <div class="col-2 col-md-2 col-lg-2">
+                &nbsp;
+            </div>
+            <div class="col-8 col-md-8 col-lg-8"> 
+                <div class="cli_box">
+                    <div class="clabel">
+                        <label for="date">Select User</label>
+                    </div>
+                    <div class="cinput">
+                        <select class="form-select form-select-sm"   [(ngModel)]="selectedUser" aria-label=".form-select-sm example">
+                            <option  *ngFor="let user of users" [ngValue]="user">{{user.username}}</option>
+                           
+                          </select>
+                    </div>
+                </div>               
+            </div>
+            <div class="col-2 col-md-2 col-lg-2">
+                &nbsp;
+            </div>
+        </div>
+    </div>
+    <div class="section_footer text-center">        
+        <button type="button" (click)="employeeReport()" class="btn csecondary_btn">Insert Bills Report</button>
+    </div>
+
+</div>
+<!-- Employee Report Component Ends Here -->
+

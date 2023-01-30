@@ -1,0 +1,586 @@
+<!--<p>intersafechange works!</p>-->
+<!-- Change Door Denominations Component Starts Here (Changed to Shift Manager Verification) but class & ID not changed -->
+<div id="changedoordenomination_content" class="changedoordenomination_content ccontent_part">
+    <div class="section_header">
+        <div class="page_name">INTERSAFE CHANGE</div><!--Shift Manager Verification Door-->
+    </div>
+    <div class="section_title">
+        <div class="row">
+            <div class="col-2 col-md-2 col-lg-2">
+                <div class="">
+                    Denominations
+                </div>
+            </div>
+            <div class="col-2 col-md-2 col-lg-2">
+                <div class="col_frenchpink">
+                   MainSafe Bal
+                </div>
+            </div>
+            <div class="col-3 col-md-3 col-lg-3">
+                <div class="col_frenchpink">
+                    Mainsafe Change 
+                </div>
+            </div>
+            <div class="col-3 col-md-3 col-lg-3">
+                <div class="labelColor">
+                    Shiftmanager Change 
+                </div>
+            </div>
+            <div class="col-2 col-md-2 col-lg-2">
+                <div class="labelColor">
+                    ShiftManager Bal
+                </div>
+            </div>
+        </div>
+    </div>
+    <form [formGroup]="SetChangeDenominationsFormValues"> 
+    <div class="section_body shiftmanagerchange">
+        <div class="padTB4">
+            <div class="row">                
+                <div class="col-2 col-md-2 col-lg-2 val_col">
+                    <div class="billaccep_txt text-center">
+                        <div class="value_type">
+                            Pennies
+                        </div>
+                        <div class="value_symbol">
+                           <span>-</span>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable"  formControlName="MainsafebalPenniesFormValues"  aria-describedby="cash" readonly>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <select class="form-select form-select-sm" formControlName="MainsafechPenniesFormValues" (change)="selectChangeHandler($event,'MainSafeChPennies','SHIFTMANAGER')">
+                            <option *ngFor="let pennies of PenniesFormListvalues" value="{{pennies.value}}">
+                                {{pennies.name}}
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <select class="form-select form-select-sm" formControlName="ShiftmanagerchPenniesFormValues" (change)="selectChangeHandler($event,'ShifmanagerChDepositePennies','SHIFTMANAGER')">
+                            <option *ngFor="let pennies of PenniesFormListvalues" value="{{pennies.value}}">
+                                {{pennies.name}}
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">                   
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="valletDepositPenniesFormValues" value="${{shiftmanagerbaloldPennies}}" id="" aria-describedby="cash" readonly>
+                    </div>                   
+                </div>                
+            </div>
+        </div>
+        <div class="padTB4">
+            <div class="row">                
+                <div class="col-2 col-md-2 col-lg-2 val_col">
+                    <div class="billaccep_txt text-center">
+                        <div class="value_type">
+                            Nickels 
+                        </div>
+                        <div class="value_symbol">
+                           <span>-</span>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="MainsafebalNickelsFormValues" aria-describedby="cash" readonly>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="MainsafechNickelsFormValues" (change)="selectChangeHandler($event,'MainSafeChNickels','SHIFTMANAGER')">
+                                            
+                            <option *ngFor="let nickels of NickelsFormListvalues" value="{{nickels.value}}">
+                                {{nickels.name}}
+                            </option>
+                            
+                        </select>
+                    </div>
+                </div>
+                          
+                <div class="col-3 col-md-3 col-lg-3">
+                    <select class="form-select form-select-sm common_select" formControlName="ShiftmanagerchNickelsFormValues" (change)="selectChangeHandler($event,'ShifmanagerChDepositeNickels','SHIFTMANAGER')">
+                                            
+                        <option *ngFor="let nickels of NickelsFormListvalues" value="{{nickels.value}}">
+                            {{nickels.name}}
+                        </option>
+                        
+                    </select>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">                   
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="valletDepositNickelsFormValues" value="${{shiftmanagerbaloldNickels}}" aria-describedby="cash" readonly>
+                    </div>
+                </div>     
+            </div>
+        </div>
+        <div class="padTB4">
+            <div class="row">                
+                <div class="col-2 col-md-2 col-lg-2 val_col">
+                    <div class="billaccep_txt text-center">
+                        <div class="value_type">
+                            Dimes
+                        </div>
+                        <div class="value_symbol">
+                           <span>-</span>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="MainsafebalDimesFromValues" aria-describedby="cash" readonly>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="MainsafechDimesFromValues" (change)="selectChangeHandler($event,'MainSafeChDimes','SHIFTMANAGER')"> 
+                                            
+                            <option *ngFor="let dimes of DimesFromListValues" value="{{dimes.value}}">
+                                {{dimes.name}}
+                            </option>
+                            
+                            
+                        </select>
+                    </div>
+                </div>
+                              
+                <div class="col-3 col-md-3 col-lg-3">
+                    <select class="form-select form-select-sm common_select" formControlName="ShiftmanagerchDimesFromValues" (change)="selectChangeHandler($event,'ShifmanagerChDepositeDimes','SHIFTMANAGER')"> 
+                                            
+                        <option *ngFor="let dimes of DimesFromListValues" value="{{dimes.value}}">
+                            {{dimes.name}}
+                        </option>
+                        
+                        
+                    </select>
+                </div>
+
+                <div class="col-2 col-md-2 col-lg-2">                   
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="valletDepositDimesFromValues" value="${{shiftmanagerbaloldDimes}}" aria-describedby="cash" readonly>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <div class="padTB4">
+            <div class="row">                
+                <div class="col-2 col-md-2 col-lg-2 val_col">
+                    <div class="billaccep_txt text-center">
+                        <div class="value_type">
+                            Quarters
+                        </div>
+                        <div class="value_symbol">
+                           <span>-</span>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="MainsafebalQuartersFormValues" aria-describedby="cash" readonly>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="MainsafechQuartersFormValues" (change)="selectChangeHandler($event,'MainSafeChQuarters','SHIFTMANAGER')">
+                                            
+                            <option *ngFor="let quarters of QuartersFormListValues" value="{{quarters.value}}">
+                                {{quarters.name}}
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>
+                        
+                <div class="col-3 col-md-3 col-lg-3">
+                    <select class="form-select form-select-sm common_select" formControlName="ShiftmanagerchQuartersFormValues" (change)="selectChangeHandler($event,'ShifmanagerChDepositeQuarters','SHIFTMANAGER')">
+                                            
+                        <option *ngFor="let quarters of QuartersFormListValues" value="{{quarters.value}}">
+                            {{quarters.name}}
+                        </option>
+                       
+                    </select>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">                   
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="valletDepositQuartersFormValues" value="${{shiftmanagerbaloldQuarters}}" aria-describedby="cash" readonly> 
+                    </div>
+                </div>       
+            </div>
+        </div>        
+        <div class="padTB4">
+            <div class="row">                
+                <div class="col-2 col-md-2 col-lg-2 val_col">
+                    <div class="billaccep_txt text-center">
+                        <div class="value_type">
+                            1$
+                        </div>
+                        <div class="value_symbol">
+                           <span>-</span>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="MainsafebalOneDollarFormValues" id="" aria-describedby="cash" readonly>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="MainsafechOneDollarFormValues" (change)="selectChangeHandler($event,'MainSafeChOnedollar','SHIFTMANAGER')">
+                                            
+                                            
+                            <option *ngFor="let one of OneDollarFormListValues" value="{{one.value}}">
+                                {{one.name}}
+                            </option>
+                            
+                        </select>
+                    </div>
+                </div>
+                           
+                <div class="col-3 col-md-3 col-lg-3">
+                    <select class="form-select form-select-sm common_select" formControlName="ShiftmanagerchOneDollarFormValues" (change)="selectChangeHandler($event,'ShifmanagerChDepositeOnedollar','SHIFTMANAGER')">
+                                            
+                                            
+                        <option *ngFor="let one of OneDollarFormListValues" value="{{one.value}}">
+                            {{one.name}}
+                        </option>
+                        
+                    </select>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">                   
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="valletDepositOneDollarFormValues" value="${{shiftmanagerbaloldOnedollar}}" aria-describedby="cash" readonly>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <!-- <div class="padTB4">
+            <div class="row">                
+                <div class="col-2 col-md-2 col-lg-2 val_col">
+                    <div class="billaccep_txt text-center">
+                        <div class="value_type">
+                            2$
+                        </div>
+                        <div class="value_symbol">
+                           <span>-</span>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" >
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" >
+                    </div>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">                   
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" >
+                    </div>
+                </div>                
+                <div class="col-2 col-md-2 col-lg-2">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm" id="" aria-describedby="cash" >
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="padTB4">
+            <div class="row">                
+                <div class="col-2 col-md-2 col-lg-2 val_col">
+                    <div class="billaccep_txt text-center">
+                        <div class="value_type">
+                            5$
+                        </div>
+                        <div class="value_symbol">
+                           <span>-</span>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="MainsafebalFiveDollarFormValues" id="" aria-describedby="cash" readonly>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="MainsafechFiveDollarFormValues" (change)="selectChangeHandler($event,'MainSafeChFivedollar','SHIFTMANAGER')">
+                                            
+                            <option *ngFor="let five of FiveDollarFormListValues" value="{{five.value}}">
+                                {{five.name}}
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>
+                           
+                <div class="col-3 col-md-3 col-lg-3">
+                    <select class="form-select form-select-sm common_select" formControlName="ShiftmanagerchFiveDollarFormValues" (change)="selectChangeHandler($event,'ShifmanagerChDepositeFivedollar','SHIFTMANAGER')">
+                                            
+                        <option *ngFor="let five of FiveDollarFormListValues" value="{{five.value}}">
+                            {{five.name}}
+                        </option>
+                       
+                    </select>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">                   
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="valletDepositFiveDollarFormValues" value="${{shiftmanagerbaloldFivedollar}}" aria-describedby="cash" readonly>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <div class="padTB4">
+            <div class="row">                
+                <div class="col-2 col-md-2 col-lg-2 val_col">
+                    <div class="billaccep_txt text-center">
+                        <div class="value_type">
+                            10$
+                        </div>
+                        <div class="value_symbol">
+                           <span>-</span>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="MainsafebalTenDollarFormValues" id="" aria-describedby="cash" readonly>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="MainsafechTenDollarFormValues" (change)="selectChangeHandler($event,'MainSafeChTendollar','SHIFTMANAGER')">
+                                            
+                            <option *ngFor="let ten of TenDollarFormListValues" value="{{ten.value}}">
+                                {{ten.name}}
+                            </option>
+                            
+                        </select>
+                    </div>
+                </div>
+                           
+                <div class="col-3 col-md-3 col-lg-3">
+                    <select class="form-select form-select-sm common_select" formControlName="ShiftmanagerchTenDollarFormValues" (change)="selectChangeHandler($event,'ShifmanagerChDepositeTendollar','SHIFTMANAGER')">
+                                            
+                        <option *ngFor="let ten of TenDollarFormListValues" value="{{ten.value}}">
+                            {{ten.name}}
+                        </option>
+                        
+                    </select>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">                   
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="valletDepositTenDollarFormValues" value="${{shiftmanagerbaloldTendollar}}" aria-describedby="cash" readonly>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <div class="padTB4">
+            <div class="row">                
+                <div class="col-2 col-md-2 col-lg-2 val_col">
+                    <div class="billaccep_txt text-center">
+                        <div class="value_type">
+                            20$
+                        </div>
+                        <div class="value_symbol">
+                           <span>-</span>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="MainsafebalTwentyDollarFormValues" id="" aria-describedby="cash" readonly>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <select class="form-select form-select-sm common_select" formControlName="MainsafechTwentyDollarFormValues" (change)="selectChangeHandler($event,'MainSafeChTwentydollar','SHIFTMANAGER')">
+                                            
+                            <option *ngFor="let twenty of TwentyDollarFormListValues" value="{{twenty.value}}">
+                                {{twenty.name}}
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>
+                           
+                <div class="col-3 col-md-3 col-lg-3">
+                    <select class="form-select form-select-sm common_select" formControlName="ShiftmanagerchTwentyDollarFormValues" (change)="selectChangeHandler($event,'ShifmanagerChDepositeTwentydollar','SHIFTMANAGER')">
+                                            
+                        <option *ngFor="let twenty of TwentyDollarFormListValues" value="{{twenty.value}}">
+                            {{twenty.name}}
+                        </option>
+                       
+                    </select>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">                   
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="valletDepositTwentyDollarFormValues" value="${{shiftmanagerbaloldTwentydollar}}" aria-describedby="cash" readonly>
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <div class="padTB4">
+            <div class="row">                
+                <div class="col-2 col-md-2 col-lg-2 val_col">
+                    <div class="billaccep_txt text-center">
+                        <div class="value_type">
+                            50$
+                        </div>
+                        <div class="value_symbol">
+                           <span>-</span>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="MainsafebalFiftyDollarFormValue" id="" aria-describedby="cash" readonly>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <!-- <input type="text" class="form-control-sm" id="" aria-describedby="cash" > -->
+                        <select class="form-select form-select-sm common_select" formControlName="MainsafechFiftyDollarFormValue" (change)="selectChangeHandler($event,'MainSafeChFiftydollar','SHIFTMANAGER')">
+                                            
+                            <option *ngFor="let Fifty of FiftyDollarFromListValues" value="{{Fifty.value}}">
+                                {{Fifty.name}}
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>
+                          
+                <div class="col-3 col-md-3 col-lg-3">
+                    <select class="form-select form-select-sm common_select" formControlName="ShiftmanagerchFiftyDollarFormValue" (change)="selectChangeHandler($event,'ShifmanagerChDepositeFiftydollar','SHIFTMANAGER')">
+                                            
+                        <option *ngFor="let Fifty of FiftyDollarFromListValues" value="{{Fifty.value}}">
+                            {{Fifty.name}}
+                        </option>
+                       
+                    </select>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">                   
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="valletDepositFiftyDollarFormValue" value="${{shiftmanagerbaloldFiftyDollar}}" aria-describedby="cash" readonly>
+                    </div>
+                </div>    
+            </div>
+        </div>
+        <div class="padTB4">
+            <div class="row">                
+                <div class="col-2 col-md-2 col-lg-2 val_col">
+                    <div class="billaccep_txt text-center">
+                        <div class="value_type">
+                            100$
+                        </div>
+                        <div class="value_symbol">
+                           <span>-</span>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="MainsafebalHundredDollarFormValue" id="" aria-describedby="cash" readonly>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <!-- <input type="text" class="form-control-sm" id="" aria-describedby="cash" > -->
+                        <select class="form-select form-select-sm common_select" formControlName="MainsafechHundredDollarFormValue" (change)="selectChangeHandler($event,'MainSafeChHundreddollar','SHIFTMANAGER')">
+                                            
+                            <option *ngFor="let Hundred of HundredDollarFromListValues" value="{{Hundred.value}}">
+                                {{Hundred.name}}
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>
+                          
+                <div class="col-3 col-md-3 col-lg-3">
+                    <select class="form-select form-select-sm common_select" formControlName="ShiftmanagerchHundredDollarFormValue" (change)="selectChangeHandler($event,'ShifmanagerChDepositeHundreddollar','SHIFTMANAGER')">
+                                            
+                        <option *ngFor="let Hundred of HundredDollarFromListValues" value="{{Hundred.value}}">
+                            {{Hundred.name}}
+                        </option>
+                       
+                    </select>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">                   
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" formControlName="valletDepositHundredDollarFormValue" value="${{shiftmanagerbaloldHundredDollar}}" aria-describedby="cash" readonly>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+    <div class="section_footer text-center">
+        <div class="footer_total">
+            <div class="row">
+                <div class="col-2 col-md-2 col-lg-2">
+                    <div class="billaccep_txt tvalue_txt text-left">
+                        Total Value =
+                    </div>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" value="${{MainsafebalTotalValue}}" aria-describedby="cash" readonly>
+                    </div>
+                </div> 
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm redNewTotal" value="${{MainsafeChTotalValue}}" aria-describedby="cash" readonly>
+                    </div>
+                </div> 
+             
+                <div class="col-3 col-md-3 col-lg-3">
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm redDepositeTotal" value="${{ShiftmanagerchTotalValue}}" aria-describedby="cash" readonly>
+                    </div>
+                </div>            
+                <div class="col-2 col-md-2 col-lg-2">                   
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm oldValletDisable" value="${{ShiftmanagerbalTotalValue}}" aria-describedby="cash" readonly>
+                    </div>
+                </div>     
+            </div>
+        </div>
+        
+        <button type="button" class="btn cprimary_btn" (click)="EditDenominations()" [disabled]="isSave">{{ShiftmanagerText}}</button>
+        <button type="button" class="btn cprimary_btn" (click)="openMainsafeLock()" >Open MainSafe </button>
+        <button type="button" class="btn cprimary_btn" (click)="openShiftManagerLock()">Open ShiftManager Safe</button>
+        <button type="button" class="btn cprimary_btn" (click)="gotoHomeNav()">Cancel</button>
+    </div>
+    </form>
+</div>
+<div class="modal1" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content1">
+            <div class="modal-header">
+                <h5 class="modal-title">Denominations</h5>
+            </div>
+            <div class="modal-body">
+                <h2>{{dynamicText}}</h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="closePopup()">
+                   Ok
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Change Door Denominations Component Ends Here -->

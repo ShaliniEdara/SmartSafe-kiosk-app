@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+      <title>Print</title>
+      <style>
+         td,
+         th,
+         tr,
+         table {
+         border-top: 1px solid black;
+         border-collapse: collapse;
+         }
+         td.description,
+         th.description {
+         width: 75px;
+         max-width: 75px;
+         }
+         td.quantity,
+         th.quantity {
+         width: 40px;
+         max-width: 40px;
+         word-break: break-all;
+         }
+         td.price,
+         th.price {
+         width: 40px;
+         max-width: 40px;
+         word-break: break-all;
+         }
+         .centered {
+         text-align: center;
+         align-content: center;
+         }
+         .ticket {
+         width: 155px;
+         max-width: 155px;
+         }
+         img {
+         max-width: inherit;
+         width: inherit;
+         }
+         @media print {
+         .hidden-print,
+         .hidden-print * {
+         display: none !important;
+         }
+         }
+      </style>
+   </head>
+   <body>
+      <div class="ticket" id="ticket">
+
+      </div>
+      <script>
+         const {ipcRenderer} = require('electron');
+
+        ipcRenderer.on('PreparePrintReport', (event, printObject) => {
+
+         alert("data"+printObject);
+         ipcRenderer.send('PrintReceipt');
+
+        const namelookup = [];
+        namelookup['storeName']= "Store Name";
+        namelookup['corpStoreNo']= "Corp StoreNo";
+        namelookup['serialNumber']= "Serial Number";
+        namelookup['timestamp']= "Time Stamp";
+
+            const container = document.querySelector('#ticket');
+            function removeAllChildNodes(parent) {
+                 while (parent.firstChild) {
+                        parent.removeChild(parent.firstChild);
+                     }
+            };
+            function reset(){
+                 
+                removeAllChildNodes(container);
+            };
+
+           //reading data here 
+
+           let tableData = printObject.data;
+           let storeInfo = printObject.storeInfoResponse;
+
+           function printReceiptName(){
+                const h1 = document.createElement("h4");
+                const titltNode = document.createTextNode(printObject.reportName);
+                h1.appendChild(titltNode);
+                container.appendChild(h1);
+           };
+
+           function printStoreInfo(){
+                Object.keys(storeInfo).forEach(function(key) {
+               
+                if(namelookup[key]!=undefined){
+                const para = document.createElement("p");
+                const node = document.createTextNode(namelookup[key] + ":" + storeInfo[key]);
+                para.appendChild(node);
+                container.appendChild(para);
+                }
+             });
+           };
+           
+           function printEmployeeName(){
+                const para = document.createElement("p");
+                const node = document.createTextNode("Name" + ":" + printObject.name);
+                para.appendChild(node);
+                container.appendChild(para);
+           }
+
+           function createTableHeader(table,headerData){
+                  let thead = table.createTHead();
+                  let row = thead.insertRow();
+                  for (let key of headerData) {
+                    let th = document.createElement("th");
+                    let text = document.createTextNode(key);
+                    th.appendChild(text);
+                    row.appendChild(th);
+                 }
+           }
+           function createTableBody(table,bodyData){
+                         for (let element of bodyData) {
+                            let row = table.insertRow();
+                            for (key in element) {
+                                let cell = row.insertCell();
+                                let text = document.createTextNode(element[key]);
+                                cell.appendChild(text);
+                            }
+                        }
+
+           }
+
+           function printTable(captionData,headerData,bodyData){
+
+                var table = document.createElement("table");
+                if(captionData!=null){
+                    var caption = table.createCaption();
+                    caption.innerHTML = captionData;
+                  }
+                var data = Object.keys(headerData);
+                createTableHeader(table, data);
+                createTableBody(table, bodyData);
+                container.appendChild(table)
+           }
+
+           if(printObject.reportName=="Test Print Receipt"){
+                    reset();
+                    printReceiptName();
+                    printStoreInfo();
+                    printEmployeeName();
+                   
+                    ipcRenderer.send('PrintReceipt', printObject.name);
+           }
+           else if(printObject.reportName=="Insert Bills Receipt"){
+                    reset();
+                    printReceiptName();
+                    printStoreInfo();
+                    printEmployeeName();
+                    printTable(null,tableData[0],tableData);
+                    ipcRenderer.send('PrintReceipt', printObject.name);
+           }
+           else if(printObject.reportName=="Reprint Receipt"){
+                    reset();
+                    printReceiptName();
+                    printStoreInfo();
+                    printEmployeeName();
+                    printTable(null,tableData[0],tableData);
+                    ipcRenderer.send('PrintReceipt', printObject.name);
+
+            }else if(printObject.reportName=="End of the Day Report"){
+
+                    reset();
+                    printReceiptName();
+                    printStoreInfo();
+                    printEmployeeName();
+                    for(let data in tableData){
+                     //  alert("data.data[0]"+JSON.stringify(tableData[data]));
+                       printTable(tableData[data].name,tableData[data].data[0],tableData[data].data);
+                    }
+                    ipcRenderer.send('PrintReceipt', printObject.name);
+
+            }
+            else if(printObject.reportName=="Employee Report"){
+
+                      reset();
+                    printReceiptName();
+                    printStoreInfo();
+                    printEmployeeName();
+                    for(let data in tableData){
+                      // alert("data.data[0]"+JSON.stringify(tableData[data]));
+                       printTable(tableData[data].name,tableData[data].data[0],tableData[data].data);
+                    }
+                    ipcRenderer.send('PrintReceipt', printObject.name);
+
+                   
+                  }else if(printObject.reportName=="Manager Report"){
+
+                        reset();
+                        printReceiptName();
+                        printStoreInfo();
+                        printEmployeeName();
+                        for(let data in tableData){
+                          
+                           printTable(tableData[data].name,tableData[data].data[0],tableData[data].data);
+                        }
+                     ipcRenderer.send('PrintReceipt', printObject.name);
+
+                  }
+
+
+        });
+      </script>
+   </body>
+</html>
