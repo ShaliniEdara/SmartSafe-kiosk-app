@@ -97,6 +97,11 @@ export class EndPoints {
     static GET_USER_BY_ROLES(){
         return this.BASE_URL+"/userInfo/users/roles";
     }
+
+    static GET_USER_BY_ROLESStore(storeName:string,roles:string){
+        return this.BASE_URL+"/userInfo/store/"+storeName+"/"+roles;
+    }
+
     static GET_STORE_BY_STORENAME(storeName:string){
         return this.BASE_URL+"/storeinfo/" +storeName;
     }

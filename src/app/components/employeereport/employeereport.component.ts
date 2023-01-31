@@ -13,6 +13,7 @@ export class EmployeereportComponent implements OnInit {
   startDate:string;
   endDate:string;
   users:User[];
+  roles:string;
 
   constructor(private router: Router,private ipcService: IpcService, private service: Service,) { }
 
@@ -21,11 +22,13 @@ export class EmployeereportComponent implements OnInit {
   }
 
   getUserByRoles(){
-    let roles={
-      "roles":[
-      'EMPLOYEE']
-    }
-    this.service.getUserByRoles(roles).subscribe(data=>{
+    var storeName= localStorage.getItem('storeName');
+    console.log("storename",storeName);
+    // let roles={
+    //   "roles":[
+    //   'EMPLOYEE']
+    // }
+    this.service.getUserByRolesStoreName(storeName,"Employee").subscribe(data=>{
       this.users=data;
     });
   };

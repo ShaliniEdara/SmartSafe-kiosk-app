@@ -113,6 +113,10 @@ export class Service {
   getUserByRoles(request:any){
     return this.httpClient.post<Array<User>>(EndPoints.GET_USER_BY_ROLES(),request);
   }
+
+  getUserByRolesStoreName(storeName:any,roles:any){
+    return this.httpClient.get<Array<User>>(EndPoints.GET_USER_BY_ROLESStore(storeName,roles));
+  }
   
   getStoreByStoreName(storeName:string){
     return this.httpClient.get<any>(EndPoints. GET_STORE_BY_STORENAME(storeName));
