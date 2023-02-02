@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BrowserWindow } from 'electron';
 import { IpcService } from 'src/app/services/ipc.service';
-
+import { KioskInfoRequest } from 'src/app/config/Model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,6 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./doorsexe.component.scss']
 })
 export class DoorsexeComponent implements OnInit {
+
+  kiosk = new KioskInfoRequest();
+  kiosks:KioskInfoRequest[];
   
   role: any;
   constructor(private router:Router, private ipcService: IpcService) { }
