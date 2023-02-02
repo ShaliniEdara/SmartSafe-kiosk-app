@@ -77,6 +77,8 @@ loaderHide(){
       'MANAGER',
       'SHIFTMANAGER']
     }
+    var storeName= localStorage.getItem('storeName');
+    console.log("storename",storeName);
     this.service.getUserByRoles(roles).subscribe(data=>{
       this.users=data;
     });
