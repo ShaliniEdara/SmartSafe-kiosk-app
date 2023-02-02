@@ -3,7 +3,7 @@
     <div class="section_header">
         <div class="page_name">Doors Software</div>
     </div>
-    <div class="row height100">
+    <div class="section_title">
     <!--   <div class="col-12 col-md-12 col-lg-12 col-xl-12 pad12">            
             <div class="option" routerLink="insertbills">
                 Exe Goes Here...
@@ -11,9 +11,98 @@
         </div>--> 
     </div>
     
-  <button type="button" class="btn cprimary_btn" (click)="gotoHomeNav()">Done</button> 
-
-
-
+    <div class="section_body">
+        <div class="row">
+            <div class="col-6 col-md-6 col-lg-6">
+                <div class="cli_box"> 
+                    <div class="clabel">
+                      <label for="kioskId" class="form-label">Kiosk Id</label>  
+                    </div>                  
+                    <div class="cinput">
+                         <input type="text" class="form-control-sm" id="kioskId" placeholder="Enter kiosk Id">   
+                    </div>
+                </div>
+                <div class="cli_box"> 
+                    <div class="clabel">
+                        <label for="brandName" class="form-label">Brand Name</label>
+                    </div>                  
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm" id="brandName" placeholder="Enter Brand Name" name="brandName">
+                    </div>
+                </div>
+                <div class="cli_box"> 
+                    <div class="clabel">
+                        <label for="modelName" class="form-label">Model Name</label>
+                    </div>                  
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm" id="modelName" placeholder="Enter Model Name" name="modelName">
+                    </div>
+                </div>                 
+            </div>
+            <div class="col-6 col-md-6 col-lg-6">
+                <div class="cli_box"> 
+                    <div class="clabel">
+                        <label for="cpu" class="form-label">CPU</label>
+                    </div>                  
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm" id="cpu" placeholder="Enter CPU" name="cpu">
+                    </div>
+                </div>
+                
+                <div class="cli_box"> 
+                    <div class="clabel">
+                        <label for="hdd" class="form-label">HDD</label>
+                    </div>                  
+                    <div class="cinput">
+                        <input type="text" class="form-control-sm" id="hdd" placeholder="Enter HDD" name="hdd">
+                </div>
+            </div>
+            
+            <div class="cli_box"> 
+                <div class="clabel">
+                    <label for="ramMemory" class="form-label">RamMemory</label>
+                </div>                  
+                <div class="cinput">
+                    <input type="text" class="form-control-sm" id="ramMemory" placeholder="Enter Ram Memory" name="ramMemory">
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-6 col-lg-6">
+            <div class="cli_box"> 
+                <div class="clabel">
+                    <label for="screenSize" class="form-label">ScreenSize</label>
+                </div>                  
+                <div class="cinput">
+                    <input type="text" class="form-control-sm" id="screenSize" placeholder="Enter ScreenSize" name="screenSize">
+                
+            </div>
+        </div>
+        
+       <div class="cli_box"> 
+            <div class="clabel">
+                <label for="ipAddress" class="form-label">Ip Address</label>
+            </div>                  
+            <div class="cinput">
+                <input type="text" class="form-control-sm" id="ipAddress" placeholder="Enter IP Address" name="ipAddress">
+        </div>
+    
 </div>
+</div>
+<div class="col-6 col-md-6 col-lg-6">
+    <div class="cli_box"> 
+        <div class="clabel">
+            <label for="macAddress" class="form-label">Mac Address</label>
+        </div>                  
+        <div class="cinput">
+            <input type="text" class="form-control-sm" id="macAddress" placeholder="Enter Mac Address" name="macAddress">
+       </div>
+    </div>
+</div>       
+</div>
+ </div>
+ <button type="button" class="btn storecprimary_btn marR12" (click)="gotoHomeNav()">Done</button> 
+</div>
+ 
+    
+ 
 <!-- Doors Exe Component Ends Here -->
