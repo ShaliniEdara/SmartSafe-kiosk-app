@@ -44,6 +44,7 @@ setDefaultStorevalues: FormGroup;
     this.service.getStoreByStoreName(storeName).
       subscribe((data) => {
         this.selectedStore = data;
+        console.log("This  are the perticilar store details"+this.selectedStore.storeName+this.selectedStore.accountNumber);
 
       })
   }
