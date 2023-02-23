@@ -1,5 +1,6 @@
 <!-- Doors Exe Component Starts Here -->
 <div id="createstore_content" class="createstore_content ccontent_part">
+    <form [formGroup]="setDefaultStorevalues">
         <div class="section_header">
         <div class="page_name">Kiosk Configure</div>
     </div>
@@ -29,7 +30,7 @@
                             <label for="kioskName" class="form-label">Kiosk Name</label>
                         </div>                  
                         <div class="cinput">
-                            <input type="text" class="form-control-sm" id="kioskName" placeholder="Enter Kiosk Name" name="kioskName">
+                            <input type="text" class="form-control-sm" formControlName="kioskName" id="kioskName" placeholder="Enter Kiosk Name" name="kioskName">
                        </div>
                     </div>
                 </div>
@@ -50,7 +51,7 @@
                                 <label for="modelName" class="form-label">Model Name</label>
                             </div>                  
                             <div class="cinput">
-                                <input type="text" class="form-control-sm" id="modelName" placeholder="Enter Model Name" name="modelName">
+                                <input type="text" class="form-control-sm" formControlName="modelName" id="modelName" placeholder="Enter Model Name" name="modelName">
                            </div>
                         </div>
                     </div>
@@ -61,7 +62,7 @@
                               <label for="cpu" class="form-label">CPU</label>  
                             </div>                  
                             <div class="cinput">
-                                 <input type="text" class="form-control-sm" id="cpu" name="cpu" placeholder="Enter CPU">   
+                                 <input type="text" class="form-control-sm" formControlName="cpu" id="cpu" name="cpu" placeholder="Enter CPU">   
                             </div>
                         </div>
                         </div>
@@ -71,7 +72,7 @@
                                     <label for="hdd" class="form-label">HDD</label>
                                 </div>                  
                                 <div class="cinput">
-                                    <input type="text" class="form-control-sm" id="hdd" placeholder="Enter HDD" name="hdd">
+                                    <input type="text" class="form-control-sm" formControlName="hdd" id="hdd" placeholder="Enter HDD" name="hdd">
                                </div>
                             </div>
                         </div>
@@ -82,7 +83,7 @@
                                   <label for="ramMemory" class="form-label">Ram Memory</label>  
                                 </div>                  
                                 <div class="cinput">
-                                     <input type="text" class="form-control-sm" id="ramMemory" name="ramMemory"  placeholder="Enter Ram Memory">   
+                                     <input type="text" class="form-control-sm" formControlName="ramMemory" id="ramMemory" name="ramMemory"  placeholder="Enter Ram Memory">   
                                 </div>
                             </div>
                             </div>
@@ -92,7 +93,7 @@
                                         <label for="screenSize" class="form-label">Screen Size</label>
                                     </div>                  
                                     <div class="cinput">
-                                        <input type="text" class="form-control-sm" id="screenSize" placeholder="Enter Screen Size" name="screenSize">
+                                        <input type="text" class="form-control-sm" formControlName="screenSize" id="screenSize" placeholder="Enter Screen Size" name="screenSize">
                                    </div>
                                 </div>
                             </div>
@@ -103,7 +104,7 @@
                                       <label for="ipAddress" class="form-label">Ip Address</label>  
                                     </div>                  
                                     <div class="cinput">
-                                         <input type="text" class="form-control-sm" id="ipAddress" name="ipAddress" placeholder="Enter Ip Address">   
+                                         <input type="text" class="form-control-sm" formControlName="ipAddress" id="ipAddress" name="ipAddress" placeholder="Enter Ip Address">   
                                     </div>
                                 </div>
                                 </div>
@@ -113,17 +114,37 @@
                                             <label for="macAddress" class="form-label">Mac Address</label>
                                         </div>                  
                                         <div class="cinput">
-                                            <input type="text" class="form-control-sm" id="macAddress" placeholder="Enter Mac Address" name="macAddress">
+                                            <input type="text" class="form-control-sm" formControlName="macAddress" id="macAddress" placeholder="Enter Mac Address" name="macAddress">
                                        </div>
                                     </div>
                                 </div>
          
 </div>
 </div>
- <button type="button" class="btn storecprimary_btn marR12"  data-bs-toggle="modal" data-bs-target="#confirm_popup">Configure Kiosk</button>
+
+<div class="section_footer">
+ <button type="button" class="btn storecprimary_btn marR12"  data-bs-toggle="modal" data-bs-target="#confirm_popup" (click)="assignStore()">Configure Kiosk</button>
  <button type="button" class="btn storecprimary_btn marR12" (click)="gotoHomeNav()">Cancel</button> 
 </div>
+</form>
+</div>
  
-    
+<div class="modal1" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content1">
+            <!-- <div class="modal-header">
+                <h5 class="modal-title">Denominations</h5>
+            </div> -->
+            <div class="modal-body">
+                <h2>{{dynamicText}}</h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="closePopup()">
+                   Ok
+                </button>
+            </div>
+        </div>
+    </div>
+  </div> 
  
 <!-- Doors Exe Component Ends Here -->

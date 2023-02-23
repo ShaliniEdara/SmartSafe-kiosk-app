@@ -44,6 +44,12 @@ export class AddaccountComponent implements OnInit {
     
      this.user.role=localStorage.getItem("Role")+"";
      this.user.loggedUserId = localStorage.getItem("userId");
+     this.user.firstName="--";
+     this.user.lastName="--";
+     this.user.mobile="--";
+     this.user.email="--";
+     this.user.passLength="4";
+
     this.service.addUser(this.user).subscribe(
       (data) => {
   

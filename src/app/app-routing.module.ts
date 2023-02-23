@@ -39,6 +39,7 @@ import { DoorsexeComponent } from './components/doorsexe/doorsexe.component';
 import { SubmitotpComponent } from './components/submitotp/submitotp.component';
 import { ShiftmanageraccountComponent } from './components/shiftmanageraccount/shiftmanageraccount.component';
 import { IntersafechangeComponent } from './components/intersafechange/intersafechange.component';
+import { CreatekioskComponent } from './components/createkiosk/createkiosk.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/homenav", pathMatch: "full" },
@@ -74,6 +75,7 @@ const routes: Routes = [
   { path: "edittruck", component: EdittruckComponent },
   { path: "removetruck", component: RemovetruckComponent },
   { path: "createstore", component: CreatestoreComponent },
+  { path: "createkiosk", component: CreatekioskComponent },
   { path: "changedoordenominations", component: ChangedoordenominationsComponent },
   { path: "standbankdoordenominations", component: StandbankdoordenominationsComponent },
   { path: "changetruckconfirmrequest", component: ChangetruckconfirmrequestComponent },

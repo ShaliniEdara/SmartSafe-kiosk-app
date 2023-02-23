@@ -1,4 +1,3 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/config/Model';
@@ -63,7 +62,7 @@ export class PinpartComponent implements OnInit {
   public doLogin(){
     this.user.feature=localStorage.getItem('feature')+"";
    // this.user.feature="All";
-   this.user.username="Admin";
+   //this.user.username="Admin";
     this.service.doLogin(this.user).subscribe(data=>{
       console.log("login success");
       localStorage.setItem('userId', data.id+"");
@@ -74,11 +73,11 @@ export class PinpartComponent implements OnInit {
       this.submitPin();
     }
     ,
-      (err: HttpErrorResponse) => {
+      (err: any) => {
         this.dynamicText=err.error.message;
         this.openPopup();
-       // alert("Invalid Pin, Please Enter Correct Pin.");
-        console.log(err.message);
+        //alert("Invalid Pin, Please Enter Correct Pin.");
+        console.log(err.error.message);
         // check error status code is 500, if so, do some action
       }
     );

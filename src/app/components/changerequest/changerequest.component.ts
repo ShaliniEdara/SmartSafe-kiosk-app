@@ -183,7 +183,7 @@ export class ChangerequestComponent implements OnInit {
     this.OrderStatus = localStorage.getItem('OrderStatus');
     this.initFormGroup();
     this.ChangeRequestStatus();
-    this.Valletchangedoordenominations();
+    
     this.getALLStandbankValues();
 
   }
@@ -399,8 +399,8 @@ export class ChangerequestComponent implements OnInit {
       this.TotalMSandSH = (this.TotalValletPennies) + (this.TotalvalletNickels) + (this.TotalvalletDimes) + (this.TotalvalletQuarters) + (this.TotalvalletOnedollar) + (this.TotalvalletFivedollar) + (this.TotalvalletTendollar) + (this.TotalvalletTwentydollar) + (this.TotalvalletFiftyDollar) + (this.TotalvalletHundredDollar);
     })
   }
-  Valletchangedoordenominations() {
-    this.service.getStandBankDetailsOnType("MAINSAFE").subscribe(data => {
+ async Valletchangedoordenominations() {
+   await this.service.getStandBankDetailsOnType("MAINSAFE").subscribe(data => {
       this.standbankresponceData = data;
       this.ValletDenominationId = this.standbankresponceData.id;
 
@@ -776,7 +776,7 @@ export class ChangerequestComponent implements OnInit {
     this.loaderShow();
     try {
       await this.service.GetChangerequestStatus(this.OrderStatus).subscribe(
-        result => {
+        async result => {
           
           let Pennieslist1 = this.PenniesFormListvalues;
           let NickelsList1 = this.NickelsFormListvalues;
@@ -933,6 +933,9 @@ export class ChangerequestComponent implements OnInit {
               shift_elements[0].classList.remove('shift_managerDiv');
             }
             this.initFormGroup();
+           await this.Valletchangedoordenominations();
+            
+
           }
           this.loaderHide();
         },

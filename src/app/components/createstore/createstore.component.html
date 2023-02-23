@@ -13,29 +13,24 @@
             <div class="col-6 col-md-6 col-lg-6">
                 <div class="cli_box"> 
                     <div class="clabel">
-                        <label for="storename" >Store Name</label>
-                        <select class="form-control border-primary" formControlName="StoreName" [(ngModel)]="store" required id="store"
-                            (change)='onStoreSelected(store.storeName)' name="store" placeholder="Search Your Store Here ">
-                              <option [ngValue]="store" *ngFor="let store of stores">
-                                {{store.storeName}} </option>
-                            </select>
+                        <label for="storename" class="form-label">Store Name</label>
                     </div>                  
-                    <!-- <div class="cinput">
-                         <select class="form-control border-primary" formControlName="StoreName" [(ngModel)]="store" required id="store"
+                    <div class="cinput">
+                        <!-- <select class="form-control border-primary" formControlName="StoreName" [(ngModel)]="store" required id="store"
                             (change)='onStoreSelected(store.storeName)' name="store" placeholder="Search Your Store Here ">
                               <option [ngValue]="store" *ngFor="let store of stores">
                                 {{store.storeName}} </option>
-                            </select> 
+                            </select> -->
                             <input type="text" class="form-control-sm" formControlName="StoreName" id="storeno" placeholder="Enter Store Number" readonly>
-                         <input type="text" class="form-control-sm" id="storename" placeholder="Enter Store Name"> 
-                    </div> -->
+                        <!-- <input type="text" class="form-control-sm" id="storename" placeholder="Enter Store Name"> -->
+                    </div>
                 </div>
                 <div class="cli_box"> 
                     <div class="clabel">
                         <label for="bankname" class="form-label">Bank Name</label>
                     </div>                  
                     <div class="cinput">
-                        <input type="text" class="form-control-sm" id="bankName" placeholder="Enter Bank Name" [value]="selectedStore.bankName">
+                        <input type="text" class="form-control-sm" id="bankName" formControlName="BankName" placeholder="Enter Bank Name">
                     </div>
                 </div>
                 <div class="cli_box"> 
@@ -43,8 +38,7 @@
                         <label for="bankaccounntno" class="form-label">Account Number</label>
                     </div>                  
                     <div class="cinput">
-                        <input type="text" class="form-control-sm" id="bankaccounntno" placeholder="Enter Account Number" 
-                        [value]="selectedStore.accountNumber" >
+                        <input type="text" class="form-control-sm" formControlName="AccountNumber" id="bankaccounntno" placeholder="Enter Account Number">
                     </div>
                 </div>                 
             </div>
@@ -54,7 +48,7 @@
                         <label for="storeno" class="form-label">Store Number</label>
                     </div>                  
                     <div class="cinput">
-                        <input type="text" class="form-control-sm" formControlName="StoreNumber" id="storeno" placeholder="Enter Store Number" [value]="selectedStore.corpStoreNo">
+                        <input type="text" class="form-control-sm" formControlName="StoreNumber" id="storeno" placeholder="Enter Store Number" >
                         <div class="form-control-position">
                 
                         </div>
@@ -63,11 +57,10 @@
                
                 <div class="cli_box"> 
                     <div class="clabel">
-                        <label for="storeaddress" class="form-label">
-                            Address</label>
+                        <label for="storeaddress" class="form-label">Address</label>
                     </div>                  
                     <div class="cinput">
-                        <textarea class="form-control" id="storeaddress" rows="4" placeholder="Enter Address" [value]="selectedStore.address"></textarea>
+                        <textarea class="form-control" id="storeaddress" formControlName="Address" rows="4" placeholder="Enter Address"></textarea>
                     </div>
                 </div>
             </div>
@@ -76,8 +69,7 @@
                     <label for="storeno" class="form-label">Minimum Balance</label>
                 </div>                  
                 <div class="cinput">
-                    <input type="text" class="form-control-sm" id="minimumBalance" placeholder="Enter Minimum Balance" [value]="selectedStore.
-                    minimumBalance">
+                    <input type="text" class="form-control-sm" formControlName="MinimumBalance" id="minimumBalance" placeholder="Enter Minimum Balance" >
                     <div class="form-control-position">
             
                     </div>
@@ -87,7 +79,7 @@
     </div>
     <div class="section_footer">
         
-        <button type="button" class="btn storecprimary_btn marR12"  data-bs-toggle="modal" data-bs-target="#confirm_popup">Configure Store</button>
+        <button type="button" class="btn storecprimary_btn marR12"  data-bs-toggle="modal" data-bs-target="#confirm_popup" [disabled]="isDisable">Configure Store</button>
         <button type="button" class="btn storecprimary_btn marR12" (click)="gotoHomeNav()">Cancel</button>
     </div>
     <div class="modal fade common_modal" id="confirm_popup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirm_popup"  aria-hidden="true">
@@ -108,7 +100,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn ccancel_btn" data-bs-dismiss="modal">Cancel</button>
-              <button type="button" class="btn caccept_btn" data-bs-dismiss="modal" 
+              <button type="button"  class="btn caccept_btn" data-bs-dismiss="modal" 
               (click)="configureStore()" routerLink="/homenav">Proceed</button>
             </div>
           </div>

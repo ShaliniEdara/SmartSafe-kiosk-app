@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { stringify } from 'querystring';
-import { StoreInfoRequest } from 'src/app/config/Model';
 import { IpcService } from 'src/app/services/ipc.service';
 import { Service } from 'src/app/services/Service';
 
@@ -16,7 +14,6 @@ export class ReportsComponent implements OnInit {
   useriD:any;
   displayStyle = "none";
   dynamicText:string;
-
   openPopup() {
       this.displayStyle = "block";
   }
@@ -46,18 +43,18 @@ export class ReportsComponent implements OnInit {
     });
   }
   gotRePrintReceipt(){
-   var storeName= localStorage.getItem('storeName');
-    this.service.rePrintReceipt(storeName).subscribe(data=>{
-      data.name=localStorage.getItem('userName');
-      console.log(localStorage.getItem('storeName'));
-      this.ipcService.send('message',data);
-    });
-  };
+    var storeName= localStorage.getItem('storeName');
+     this.service.rePrintReceipt(storeName).subscribe(data=>{
+       data.name=localStorage.getItem('userName');
+       console.log(localStorage.getItem('storeName'));
+       this.ipcService.send('message',data);
+     });
+   };
   goEndOfTheDayReport(){
     
     this.service.printEndOfTheReport(this.useriD).subscribe(data=>{
       this.dynamicText="Data Success";
-     // this.openPopup();
+      this.openPopup();
       data.name=localStorage.getItem('userName');
       this.ipcService.send('message',data);
     }); 

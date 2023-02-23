@@ -8,8 +8,6 @@ export class EndPoints {
 
     public static readonly BASE_URL: string = "http://localhost:9002";
 
-   // public static readonly BASE_URL:string="http://smartersafeiicorpjavaspringbootmicro-env.eba-hx3uz3y2.us-east-1.elasticbeanstalk.com"
-
     public static DO_LOGIN(): string {
         return this.BASE_URL + "/userInfo/loginKiosk";
     }
@@ -68,9 +66,15 @@ export class EndPoints {
     static MANAGER_BILL_REPORT(): string {
         return this.BASE_URL + "/reports/managerReport/";
     }
-
+    static PRINT_MANAGER_REPORT(userId:string):string{
+        return this.BASE_URL+"/reports/managerReport/"+userId;
+    }
     static INSERTBIILS_REPORT(transactionNumber:string):string{
         return  this.BASE_URL+"/reports/insertBillsReport/"+transactionNumber;
+    }
+
+    static INSERTBIILS_REPORTT(transactionNumber:string,storeName:string):string{
+        return  this.BASE_URL+"/reports/insertBillsReport/"+transactionNumber+"/"+storeName;
     }
 
     static PRINT_TEST_REPORT(storeName:string):string{
@@ -85,9 +89,6 @@ export class EndPoints {
     static PRINT_EMPLOYEE_REPORT(userId:string):string{
         return this.BASE_URL+"/reports/employeeReport/"+userId;
     }
-    static PRINT_MANAGER_REPORT(userId:string):string{
-        return this.BASE_URL+"/reports/managerReport/"+userId;
-    }
     static GETCHANGEREQUESTREPORT(path:string):string{
         return this.BASE_URL+"/reports/changeRequestReportExport/"+path
     }
@@ -97,9 +98,12 @@ export class EndPoints {
     static GET_USER_BY_ROLES(){
         return this.BASE_URL+"/userInfo/users/roles";
     }
-
     static GET_USER_BY_ROLESStore(storeName:string,roles:string){
         return this.BASE_URL+"/userInfo/store/"+storeName+"/"+roles;
+    }
+
+    static GET_USER_BY_ROLESs(storeName:string){
+        return this.BASE_URL+"/userInfo/users/roles/"+storeName;
     }
 
     static GET_STORE_BY_STORENAME(storeName:string){
@@ -122,4 +126,15 @@ export class EndPoints {
         return this.BASE_URL+"/lock/open/"+id;
     }
 
+    public static GET_KIOSK_MAC(){
+        return this.BASE_URL+"/kiosk/macInfo";
+    }
+
+    public static ASSIGN_STORE_KIOSK(storeId:number,kioskId:number){
+        return this.BASE_URL+"/kiosk/assign/store/"+storeId+"/kiosk/"+kioskId;
+    }
+
+    public static find_storedetail(storeName:string){
+        return this.BASE_URL+"/storeinfo/forkiosk/"+storeName;
+    }
 }

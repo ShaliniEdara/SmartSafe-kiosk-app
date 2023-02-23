@@ -624,7 +624,7 @@ initFormGroup() {
     this.changeValetDenominations.new_dimes=this.newDimes;
     this.changeValetDenominations.new_quarters=this.newQuarters;
     this.changeValetDenominations.new_den_1$=this.newOnedollar;
-    this.changeValetDenominations.new_den_5$=this.newFiftyDollar;
+    this.changeValetDenominations.new_den_5$=this.newFivedollar;
     this.changeValetDenominations.new_den_10$=this.newTendollar;
     this.changeValetDenominations.new_den_20$=this.newTwentydollar;
     this.changeValetDenominations.new_den_50$=this.newFiftyDollar;
@@ -635,7 +635,7 @@ initFormGroup() {
     this.changeValetDenominations.old_dimes=this.oldDimes;
     this.changeValetDenominations.old_quarters=this.oldQuarters;
     this.changeValetDenominations.old_den_1$=this.oldOnedollar;
-    this.changeValetDenominations.old_den_5$=this.oldFiftyDollar;
+    this.changeValetDenominations.old_den_5$=this.oldFivedollar;
     this.changeValetDenominations.old_den_10$=this.oldTendollar;
     this.changeValetDenominations.old_den_20$=this.oldTwentydollar;
     this.changeValetDenominations.old_den_50$=this.oldFiftyDollar;

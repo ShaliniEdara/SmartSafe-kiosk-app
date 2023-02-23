@@ -40,6 +40,8 @@ import { CreatestoreComponent } from './components/createstore/createstore.compo
 import { IntersafechangeComponent } from './components/intersafechange/intersafechange.component';
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 import { NgxLoaderModule } from '@tusharghoshbd/ngx-loader';
+import { DoorsexeComponent } from './components/doorsexe/doorsexe.component';
+import { CreatekioskComponent } from './components/createkiosk/createkiosk.component';
 /**
   * virtual key board allow only numbers
   *  refer this site https://www.npmjs.com/package/angular-onscreen-material-keyboard/v/0.3.1
@@ -93,7 +95,8 @@ import { NgxLoaderModule } from '@tusharghoshbd/ngx-loader';
     ChangetruckconfirmrequestComponent,
     AddtruckComponent,
     PhoneMaskDirective,
-    ReportsComponent
+    ReportsComponent,
+    CreatekioskComponent
   ],
   exports: [
     PhoneMaskDirective

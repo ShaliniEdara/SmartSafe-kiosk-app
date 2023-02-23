@@ -50,11 +50,20 @@ export class Service {
     return this.httpClient.get<GetStandBankRequestValues>(EndPoints.GET_STANDBANK_DETAILS(type));
   }
   getAllDenominations(){
+    return this.httpClient.get<Array<GetStandBankRequestValues>>(EndPoints.GET_ALLDENOMINATIONS());
+  }
+  getAllDenominationss(){
     return this.httpClient.get<any>(EndPoints.GET_ALLDENOMINATIONS());
   }
+
   GetChangerequestAll(){
+    return this.httpClient.get<Array<ChangeRequest>>(EndPoints.GET_CHANGEREQUESTALLSTATUS());
+  }
+
+  GetChangerequestAlll(){
     return this.httpClient.get<any>(EndPoints.GET_CHANGEREQUESTALLSTATUS());
   }
+
   users(){
       return this.httpClient.get<Array<User>>(EndPoints.LIST_USERS());
   }
@@ -79,13 +88,19 @@ export class Service {
   managerBillReport(dateRequest: any) {
     return this.httpClient.post<any>(EndPoints.MANAGER_BILL_REPORT(), dateRequest);
   }
+  gotoManagerReport(userId:string,data:any){
+    return this.httpClient.post<any>(EndPoints.PRINT_MANAGER_REPORT(userId),data);
+  }
 
   insertBillsReportData(transactionNUmber:string){
     return this.httpClient.get<any>(EndPoints.INSERTBIILS_REPORT(transactionNUmber));
   }
+  insertBillsReportDataa(transactionNUmber:string,storeName:any){
+    return this.httpClient.get<any>(EndPoints.INSERTBIILS_REPORTT(transactionNUmber,storeName));
+  }
   printTestReport(storeName:any){
     return this.httpClient.get<any>(EndPoints.PRINT_TEST_REPORT(storeName));
-  } 
+  }  
 
   rePrintReceipt(storeName:any){
     return this.httpClient.get<any>(EndPoints.RE_PRINT_RECEIPT(storeName));
@@ -96,10 +111,6 @@ export class Service {
 
   gotoEmployeeReport(userId:string,data:any){
     return this.httpClient.post<any>(EndPoints.PRINT_EMPLOYEE_REPORT(userId),data);
-  }
-
-  gotoManagerReport(userId:string,data:any){
-    return this.httpClient.post<any>(EndPoints.PRINT_MANAGER_REPORT(userId),data);
   }
 
   getChangerequestExcelReport(path:string) :Observable<Blob>{
@@ -117,6 +128,11 @@ export class Service {
   getUserByRolesStoreName(storeName:any,roles:any){
     return this.httpClient.get<Array<User>>(EndPoints.GET_USER_BY_ROLESStore(storeName,roles));
   }
+
+  getUserByRoless(storeName:any,request:any){
+    return this.httpClient.post<Array<User>>(EndPoints.GET_USER_BY_ROLESs(storeName),request);
+  }
+  
   
   getStoreByStoreName(storeName:string){
     return this.httpClient.get<any>(EndPoints. GET_STORE_BY_STORENAME(storeName));
@@ -136,6 +152,19 @@ export class Service {
 
   openLock(id:string){
     return this.httpClient.get<any>(EndPoints.OPEN_LOCK(id))
+  }
+
+  kioskMac(){
+    return this.httpClient.get<any>(EndPoints.GET_KIOSK_MAC())
+  }
+
+  assignStoreKiosk(storeId:any,kioskId:any){
+    return this.httpClient.get<any>(EndPoints.ASSIGN_STORE_KIOSK(storeId,kioskId))
+  }
+
+  
+  findstoredetail(storeName:any){
+    return this.httpClient.get<any>(EndPoints.find_storedetail(storeName))
   }
 
 }

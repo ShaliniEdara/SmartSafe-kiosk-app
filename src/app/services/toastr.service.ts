@@ -108,10 +108,6 @@ export class NGXToastrService {
         this.toastr.error(message);
     
     }
-
-    typeCustommessage(message:string){
-        this.toastr.warning(message)
-    }
     
 
 }

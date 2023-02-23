@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { StoreInfoRequest,User } from 'src/app/config/Model';
+import { StoreInfoRequest, User } from 'src/app/config/Model';
 import { Service } from 'src/app/services/Service';
-import { NgForm, FormGroup, FormBuilder, FormControl, Validators, FormsModule } from "@angular/forms";
+import { NgForm, FormGroup, FormBuilder, FormControl, Validators, FormsModule  } from "@angular/forms";
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-createstore',
@@ -12,65 +13,78 @@ import { NgForm, FormGroup, FormBuilder, FormControl, Validators, FormsModule } 
 })
 export class CreatestoreComponent implements OnInit {
 
-store = new StoreInfoRequest();
-stores:StoreInfoRequest[];
-user:User[];
-selectedStore = new StoreInfoRequest();
-setDefaultStorevalues: FormGroup;
-  constructor(private router:Router,private http: HttpClient,private service:Service,private formBuilder: FormBuilder,
-     ) { }
-  gotoHomeNav(){
+  store = new StoreInfoRequest();
+  stores: StoreInfoRequest[];
+  user: User[];
+  useriD: any;
+  selectedStore = new StoreInfoRequest();
+  setDefaultStorevalues: FormGroup;
+  isDisable:boolean=false;
+  constructor(private router: Router, private http: HttpClient, private service: Service, private formBuilder: FormBuilder,
+  ) { }
+  gotoHomeNav() {
     this.router.navigateByUrl('/homenav');
   }
   ngOnInit(): void {
     this.initFormGroup();
-    this.getAllStoresList();
+    //this.getAllStoresList();
     this.getstoreDetails();
   }
-  configureStore(){
+  async configureStore() {
     this.store.configured = true;
-    this.service.configureStore(this.store).subscribe((data)=>{
-   // alert("Store configured.");
+    await this.service.configureStore(this.store).subscribe((data) => {
+      alert("Store configured.");
     });
   }
 
-  initFormGroup(){
+  initFormGroup() {
     this.setDefaultStorevalues = this.formBuilder.group({
       StoreName: [''],
-      StoreNumber:['']
+      StoreNumber: [''],
+      BankName: [''],
+      AccountNumber: [''],
+      Address: [''],
+      MinimumBalance: ['']
     });
   }
   onStoreSelected(storeName: string) {
     this.service.getStoreByStoreName(storeName).
       subscribe((data) => {
         this.selectedStore = data;
-        console.log("This  are the perticilar store details"+this.selectedStore.storeName+this.selectedStore.accountNumber);
 
       })
   }
-//default store details 
-  getstoreDetails(){
-    return this.service.users().
-      subscribe((data) => {
-        this.user = data;
-        if(this.user[0].id==7){
-          this.setDefaultStorevalues.patchValue({
-            StoreName:this.stores[0].storeName,
-            StoreNumber:this.stores[0].serialNumber
-          });
-        }
-      });
-  }
-  getAllStoresList() {
-    return this.service.getStores().
+  //default store details 
+  //  async getstoreDetails(){
+
+  //  }
+  async getstoreDetails() {
+    return await this.service.getStores().
       subscribe((data) => {
         console.log(data);
         this.stores = data;
+        this.useriD = localStorage.getItem('userId');
+        this.stores.forEach(item => {
+          item.userIds.forEach(element => {
+            if (element == parseInt(this.useriD)) {
+              this.store.id = item.id;
+              this.isDisable=false;
+              this.setDefaultStorevalues.patchValue({
+                StoreName: item.storeName,
+                StoreNumber: item.serialNumber,
+                BankName: item.bankName,
+                AccountNumber: item.accountNumber,
+                Address: item.address,
+                MinimumBalance: item.minimumBalance
+              });
+            }
+          });
+        });
+        if (this.store.id == undefined) {
+          this.isDisable=true;
+          alert("Please configure the store");
+        }
       });
+
   }
-  
-  
-
-
-
 }

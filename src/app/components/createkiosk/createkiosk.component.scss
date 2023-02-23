@@ -1,0 +1,65 @@
+.createstore_content .clabel label
+{
+    padding-bottom: 2px;
+}
+.createstore_content .cli_box
+{
+    padding-bottom: 16px;
+}
+.createstore_content .clabel label
+{
+    font-size: 21px;
+    padding-bottom: 8px;
+}
+.createstore_content .cinput textarea
+{
+    padding-bottom: 0px;
+    border-radius: 2px;
+}
+.createstore_content .section_footer
+{
+    position: initial;
+    padding-top: 16px;
+    right: 0px;
+    text-align: right;
+}
+.createstore_content .section_footer .btn
+{
+    margin-right: 0px;
+}
+
+
+.addaccount_content .section_footer
+{
+    margin-top: 16px;
+    text-align: right;
+    position: initial;
+}
+.addaccount_content .section_footer .btn
+{
+    margin-right: 0px;
+}
+.modal1 {
+    position: fixed;
+    top: 180px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    outline: 0px;
+}
+.modal-content1 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #ffffff;
+    background-clip: padding-box;
+    border: 1px solid #2c3051;
+    border-radius: 1.3rem;
+    outline: 0;
+}
+

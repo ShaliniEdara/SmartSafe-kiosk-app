@@ -65,9 +65,11 @@ export class InsertbillsComponent implements OnInit {
 
   processInsertBills() {
     debugger
+    var storeName= localStorage.getItem('storeName');
+    console.log("storename"+storeName)
     this.service.processInsertBills(this.userId).subscribe(data => {
-     this.transactionNumber=data.transactionNumber;
-        this.service.insertBillsReportData(this.transactionNumber).subscribe(data=>{
+    this.transactionNumber=data.transactionNumber;
+        this.service.insertBillsReportDataa(this.transactionNumber,storeName).subscribe(data=>{
           data.name=localStorage.getItem('userName');
            this.ipcService.send("message",data);
            this.router.navigateByUrl('/homenav'); 

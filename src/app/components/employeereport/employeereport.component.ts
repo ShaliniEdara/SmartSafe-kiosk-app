@@ -13,7 +13,6 @@ export class EmployeereportComponent implements OnInit {
   startDate:string;
   endDate:string;
   users:User[];
-  roles:string;
 
   constructor(private router: Router,private ipcService: IpcService, private service: Service,) { }
 

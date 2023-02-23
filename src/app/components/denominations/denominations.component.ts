@@ -184,12 +184,13 @@ loaderHide(){
   }
   processInsertBills() {
     this.isSendRequest=false;
+    var storeName= localStorage.getItem('storeName');
+    console.log("storename"+storeName)
     if(this.newTotalValue==(this.sum)){
       this.loaderShow();
       this.service.processInsertBills(this.userId).subscribe(data => {
         this.transactionNumber=data.transactionNumber;
-           this.service.insertBillsReportData(this.transactionNumber).subscribe(
-            data=>{
+        this.service.insertBillsReportDataa(this.transactionNumber,storeName).subscribe(data=>{
               this.dynamicText="Successfully Inserted the Amount in Valut. Please Click on Send Change Request";
               this.openPopup();
             

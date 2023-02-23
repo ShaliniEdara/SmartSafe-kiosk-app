@@ -79,7 +79,7 @@ loaderHide(){
     }
     var storeName= localStorage.getItem('storeName');
     console.log("storename",storeName);
-    this.service.getUserByRoles(roles).subscribe(data=>{
+    this.service.getUserByRoless(storeName,roles).subscribe(data=>{
       this.users=data;
     });
   };
@@ -99,7 +99,7 @@ loaderHide(){
   };
   TruckChangeRequestStatus(){
     this.loaderShow();
-    this.service.GetChangerequestAll().subscribe(
+    this.service.GetChangerequestAlll().subscribe(
     data=>{
     this.changeRequest = data;
     data.reportName="Change Request Report";
@@ -114,7 +114,7 @@ loaderHide(){
     );
   }
   async getALLStandbankValues() {
-    await this.service.getAllDenominations().subscribe(data => {
+    await this.service.getAllDenominationss().subscribe(data => {
       this.standbankresponceDataList = data;
       console.log(this.standbankresponceDataList);
       data.reportName="Stand Bank Report";
@@ -122,6 +122,7 @@ loaderHide(){
     });
   }
 }
+
 
 
 
